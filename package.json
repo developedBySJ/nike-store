@@ -9,7 +9,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "prebuild": "rimraf dist && (cd client && yarn && yarn build)",
+    "heroku-prebuild": "rimraf dist && (cd client && NPM_CONFIG_PRODUCTION=false yarn && yarn build)",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
