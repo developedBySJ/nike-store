@@ -154,7 +154,7 @@ export class OrderService {
     })
 
     await newOrder.save()
-    // await this.cartService.clearCart(user.id)
+    await this.cartService.clearCart(user.id)
 
     return newOrder
   }
