@@ -1,0 +1,340 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Address {
+  addressLine1: String!
+  city: String!
+  country: String!
+  postalCode: Int!
+}
+
+input AddressInput {
+  addressLine1: String!
+  city: String!
+  country: String!
+  postalCode: Int!
+}
+
+type Cart {
+  createdAt: String!
+  id: ID!
+  memberId: ID!
+  products: [CartProduct!]!
+}
+
+type CartProduct {
+  description: String!
+  id: ID!
+  image: String!
+  name: String!
+  price: Float!
+  qty: Int!
+  size: String!
+  slug: String!
+}
+
+input CartProductInput {
+  id: ID!
+  qty: Int!
+  size: String!
+}
+
+input CreateOrderInput {
+  products: [OrderProducts!]!
+  shippingAddress: AddressInput!
+  stripeToken: String!
+  tax: Float!
+  totalPrice: Float!
+}
+
+input CreateProductInput {
+  availableStock: Int!
+  brand: String!
+  category: String!
+  description: String!
+  details: String!
+  fit: [String!]!
+  images: [Upload!]!
+  material: String
+  mrp: Float!
+  name: String!
+  price: Float!
+  size: [String!]!
+}
+
+input CreateReviewInput {
+  comment: String!
+  productId: ID!
+  rating: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Favourite {
+  createdAt: String!
+  id: ID!
+  memberId: ID!
+  products: [FavouriteProduct!]!
+}
+
+type FavouriteProduct {
+  description: String!
+  id: ID!
+  image: String!
+  name: String!
+  price: Float!
+  slug: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type Member {
+  address: Address
+  avatar: String
+  cart: Cart
+  createdAt: DateTime!
+  dateOfBirth: DateTime!
+  email: String!
+  favourite: Favourite
+  firstName: String!
+  id: ID!
+  isAdmin: Boolean!
+  lastName: String!
+}
+
+input MemberFilter {
+  limit: Int = 8
+  page: Int = 1
+  sortBy: SortMemberBy
+}
+
+type Mutation {
+  addToCart(CartProductInput: CartProductInput!): Cart!
+  addToFavourites(productId: ID!): Favourite!
+  clearCart: Cart!
+  clearFavourites: Favourite!
+  createOrder(CreateOrderInput: CreateOrderInput!): Order!
+  createProduct(CreateProductInput: CreateProductInput!): Product!
+  createReview(CreateReviewInput: CreateReviewInput!): Review!
+  deleteMember(id: String!): Member!
+  deleteOrder(id: ID!): Order!
+  deleteProduct(id: ID!): Product!
+  deleteReview(reviewId: ID!): Review!
+  logOut: Viewer!
+  login(LoginInput: LoginInput!): Viewer!
+  removeFromCart(productId: ID!, size: String!): Cart!
+  removeFromFavourites(productId: ID!): Favourite!
+  signUp(SignUpInput: SignUpInput!): Viewer!
+  updateCartProductQty(UpdateCartProductQtyInput: UpdateCartProductQtyInput!): Cart!
+  updateMember(UpdateUserInput: UpdateMemberInput!): Member!
+  updateOrder(orderId: ID!): Order!
+  updateProduct: String!
+  updateReview(UpdateReviewInput: UpdateReviewInput!): Review!
+}
+
+type Order {
+  createdAt: DateTime!
+  deliveredAt: DateTime
+  id: ID!
+  memberId: ID!
+  paidAt: DateTime
+  payment: Payment
+  products: [CartProduct!]!
+  shippingAddress: Address!
+  tax: Float!
+  totalPrice: Float!
+}
+
+input OrderFilter {
+  dateRange: [String!]
+  limit: Int = 8
+  page: Int = 1
+  sortBy: SortOrderBy
+  status: OrderStatus
+}
+
+input OrderProducts {
+  description: String!
+  id: ID!
+  image: String!
+  name: String!
+  price: Float!
+  qty: Int!
+  size: String!
+  slug: String!
+}
+
+enum OrderStatus {
+  COMPLETED
+  PENDING
+}
+
+type Payment {
+  customerName: String!
+  email: String!
+  id: String!
+  method: String!
+  status: String!
+}
+
+type Product {
+  availableStock: Int!
+  brand: String!
+  category: String!
+  createdAt: String!
+  description: String!
+  details: String!
+  fit: [String!]!
+  id: ID!
+  images: [String!]!
+  material: String
+  mrp: Float!
+  name: String!
+  numOfReviews: Int!
+  price: Float!
+  ratings: Float!
+  reviews: [ProductReview!]
+  size: [String!]!
+  slug: String!
+}
+
+input ProductFilter {
+  category: String
+  limit: Int = 8
+  material: String
+  page: Int = 1
+  priceRange: [Int!]
+  ratings: Float
+  searchQuery: String
+  size: String
+  sortBy: SortProductBy = FEATURED
+}
+
+type ProductReview {
+  comment: String!
+  createdAt: DateTime!
+  id: ID!
+  member: ReviewMember!
+  rating: Float!
+}
+
+type Query {
+  getMemberByEmail(id: String!): Member!
+  getMemberById(id: ID!): Member!
+  getMembers(MemberFilter: MemberFilter!): [Member!]!
+  getMyCart: Cart!
+  getMyFavourites: Favourite!
+  getMyOrders(OrderFilter: OrderFilter!): [Order!]!
+  getMyReviews(ReviewsFilter: ReviewsFilter): [Review!]!
+  getOrder(id: ID!): Order!
+  getOrders(OrderFilter: OrderFilter!): [Order!]!
+  getProductById(id: ID!): Product!
+  getProductBySlug(slug: String!): Product!
+  getProducts(GetProductInput: ProductFilter): [Product!]!
+  getReview(reviewId: ID!): Review!
+  getReviews(GetReviewsInput: ReviewsFilter!): [Review!]!
+  whoAmI: Viewer!
+}
+
+type Review {
+  comment: String!
+  createdAt: DateTime!
+  id: ID!
+  member: ReviewMember!
+  productId: String!
+  productSlug: String!
+  rating: Int!
+}
+
+type ReviewMember {
+  avatar: String
+  firstName: String!
+  id: ID!
+  lastName: String!
+}
+
+input ReviewsFilter {
+  limit: Int = 8
+  page: Int = 1
+  productId: ID
+  sortBy: SortReviewsBy
+}
+
+input SignUpInput {
+  dateOfBirth: DateTime!
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+}
+
+enum SortMemberBy {
+  ASC_NAME
+  DESC_NAME
+  ROLE
+}
+
+enum SortOrderBy {
+  NEWEST_FIRST
+  OLDEST_FIRST
+  STATUS
+  TOTAL_PRICE_HIGH_TO_LOW
+  TOTAL_PRICE_LOW_TO_HIGH
+}
+
+enum SortProductBy {
+  FEATURED
+  NEWEST
+  PRICE_HIGH_TO_LOW
+  PRICE_LOW_TO_HIGH
+}
+
+enum SortReviewsBy {
+  NEWEST
+  RATING_HIGH_TO_LOW
+  RATING_LOW_TO_HIGH
+}
+
+input UpdateCartProductQtyInput {
+  id: ID!
+  qty: Int!
+  size: String!
+}
+
+input UpdateMemberInput {
+  address: AddressInput
+  avatar: Upload
+  currPassword: String
+  dateOfBirth: String
+  firstName: String
+  id: ID!
+  isAdmin: Boolean
+  lastName: String
+  newPassword: String
+}
+
+input UpdateReviewInput {
+  comment: String
+  rating: Int
+  reviewId: ID!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type Viewer {
+  avatar: String
+  didRequest: Boolean!
+  email: String
+  firstName: String
+  id: ID
+  isAdmin: Boolean
+  lastName: String
+}
