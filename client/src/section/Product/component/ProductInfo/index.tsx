@@ -1,18 +1,18 @@
-import { useStyletron } from "baseui";
-import { Block } from "baseui/block";
-import { StyledLink } from "baseui/link";
-import { Modal, ModalBody, ModalHeader } from "baseui/modal";
-import { Skeleton } from "baseui/skeleton";
-import { H4, Paragraph1, Paragraph2 } from "baseui/typography";
-import React from "react";
-import { formatPrice } from "../../../../lib/utils/formatPrice";
+import {useStyletron} from 'baseui';
+import {Block} from 'baseui/block';
+import {StyledLink} from 'baseui/link';
+import {Modal, ModalBody, ModalHeader} from 'baseui/modal';
+import {Skeleton} from 'baseui/skeleton';
+import {H4, Paragraph1, Paragraph2} from 'baseui/typography';
+import React from 'react';
+import {formatPrice} from '../../../../lib/utils/formatPrice';
 
 interface IProductNameProps {
   name: string;
   description: string;
   price: number;
 }
-const ProductName = ({ description, name, price }: IProductNameProps) => {
+const ProductName = ({description, name, price}: IProductNameProps) => {
   const [css, theme] = useStyletron();
   return (
     <Block display="flex" justifyContent="space-between" marginBottom="2rem">
@@ -20,9 +20,9 @@ const ProductName = ({ description, name, price }: IProductNameProps) => {
         <Paragraph1>{description}</Paragraph1>
         <H4>{name}</H4>
       </Block>
-      <Block className={css({ textAlign: "right" })}>
+      <Block className={css({textAlign: 'right'})}>
         <Paragraph1>{formatPrice(price)}</Paragraph1>
-        <Paragraph2 overrides={{ Block: { style: { opacity: 0.5 } } }}>
+        <Paragraph2 overrides={{Block: {style: {opacity: 0.5}}}}>
           incl. of taxes <br /> and duties
         </Paragraph2>
       </Block>
@@ -36,52 +36,58 @@ const ProductDetails = (props: {
   price: number;
   image: string;
 }) => {
-  const { details, image, name, price } = props;
+  const {details, image, name, price} = props;
   const [css, theme] = useStyletron();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   return (
     <>
-      <Paragraph2
-        overrides={{
-          Block: {
-            props: {
-              dangerouslySetInnerHTML: { __html: details },
+      <div>
+        <Paragraph2
+          overrides={{
+            Block: {
+              props: {
+                dangerouslySetInnerHTML: {__html: details},
+              },
+              style: {
+                height: '25vh',
+                minHeight: '100px',
+                overflow: 'hidden',
+                position: 'relative',
+                zIndex: -2,
+              },
             },
-            style: {
-              height: "25vh",
-              minHeight: "100px",
-              overflow: "hidden",
-              position: "relative",
-            },
-          },
-        }}
-      />
-      <span
-        className={css({
-          width: "100%",
-          height: "100%",
+          }}
+        />
+        <span
+          className={css({
+            width: '100%',
+            height: '100%',
+            display: 'block',
+            position: 'absolute',
+            bottom: '0%',
+            left: '0%',
+            zIndex: -1,
+            backgroundImage:
+              'linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 10%,rgba(255,255,255,0) 100%)',
+          })}
+        />
+        <StyledLink
+          className={css({
+            cursor: 'pointer',
+            display: 'block',
+          })}
+          onClick={() => setIsModalOpen(true)}
+        >
+          View Product Details
+        </StyledLink>
+      </div>
 
-          position: "absolute",
-          bottom: "0%",
-          left: "0%",
-          backgroundImage:
-            "linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 10%,rgba(255,255,255,0) 100%)",
-        })}
-      />
-      <StyledLink
-        className={css({
-          cursor: "pointer",
-        })}
-        onClick={() => setIsModalOpen(true)}
-      >
-        View Product Details
-      </StyledLink>
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         overrides={{
-          Dialog: { style: { borderRadius: "1rem" } },
-          Root: { style: { zIndex: 2 } },
+          Dialog: {style: {borderRadius: '1rem'}},
+          Root: {style: {zIndex: 2}},
         }}
       >
         <ModalHeader>
@@ -97,11 +103,11 @@ const ProductDetails = (props: {
               overrides={{
                 Block: {
                   props: {
-                    dangerouslySetInnerHTML: { __html: details },
+                    dangerouslySetInnerHTML: {__html: details},
                   },
                   style: {
-                    " strong": {
-                      marginTop: "2rem",
+                    ' strong': {
+                      marginTop: '2rem',
                     },
                   },
                 },
@@ -121,7 +127,7 @@ const ShippingInfo = () => {
       <Paragraph2 marginBottom="2rem">
         Your order of ₹14,000 or more gets free standard delivery.
       </Paragraph2>
-      <ul className={css({ listStyleType: "disc", marginBottom: "2rem" })}>
+      <ul className={css({listStyleType: 'disc', marginBottom: '2rem'})}>
         <li>
           <Paragraph2>
             Standard Delivery for Postal Codes: 100000-399999, 500000-699999 and
@@ -150,4 +156,4 @@ const ShippingInfo = () => {
   );
 };
 
-export { ProductName, ProductDetails, ShippingInfo };
+export {ProductName, ProductDetails, ShippingInfo};
