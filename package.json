@@ -5,9 +5,10 @@
   "engines": {
     "node": "14.15.3"
   },
-  "author": "",
+  "author": "Swapnil Jagtap",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "repository": "https://github.com/developedBySJ/nike-store",
   "scripts": {
     "heroku-prebuild": "(cd client && NPM_CONFIG_PRODUCTION=false yarn && yarn build)",
     "prebuild": "rimraf dist",

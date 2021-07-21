@@ -2,6 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "author": "Swapnil Jagtap",
+  "license": "MIT",
+  "repository": "https://github.com/developedBySJ/nike-store",
   "proxy": "http://localhost:9000",
   "dependencies": {
     "@apollo/client": "^3.3.8",
