@@ -1,86 +1,89 @@
-import { Type } from 'class-transformer'
-import { IsBoolean, IsEnum, IsInt, IsISO8601, IsMongoId, IsNotEmptyObject, IsNumber, IsOptional, MaxLength, Min, MinLength, ValidateNested } from 'class-validator'
-import { SortMemberBy } from './member.input'
-
+import {Type} from 'class-transformer'
+import {
+  IsBoolean,
+  IsEnum,
+  IsInt,
+  IsISO8601,
+  IsMongoId,
+  IsNotEmptyObject,
+  IsNumber,
+  IsOptional,
+  MaxLength,
+  Min,
+  MinLength,
+  ValidateNested,
+} from 'class-validator'
+import {SortMemberBy} from './member.input'
 
 export class AddressDto {
-
   @MinLength(3)
   @MaxLength(30)
-  addressLine1: string;
-
-
-  @MinLength(3)
-  @MaxLength(15)
-  city: string;
-
+  addressLine1: string
 
   @MinLength(3)
   @MaxLength(15)
-  country: string;
+  city: string
 
+  @MinLength(3)
+  @MaxLength(15)
+  country: string
 
   @IsNumber()
-  postalCode: number;
-
+  postalCode: number
 }
 
 export class UpdateMemberDto {
-
-  @IsMongoId({ message: "invalid member id" })
-  id: string;
+  @IsMongoId({message: 'invalid member id'})
+  id: string
 
   @IsOptional()
   @MinLength(3)
   @MaxLength(15)
-  firstName: string;
+  firstName: string
 
   @IsOptional()
   @MinLength(2)
   @MaxLength(15)
-  lastName: string;
+  lastName: string
 
   @IsOptional()
   @IsISO8601()
-  dateOfBirth: string;
+  dateOfBirth: string
 
   @IsOptional()
   @MinLength(6)
   @MaxLength(15)
-  currPassword: string;
+  currPassword: string
 
   @IsOptional()
   @IsOptional()
   @MinLength(6)
   @MaxLength(15)
-  newPassword: string;
+  newPassword: string
 
   @IsOptional()
   @IsBoolean()
-  isAdmin: boolean;
+  isAdmin: boolean
 
   @IsOptional()
   @ValidateNested()
   @IsNotEmptyObject()
   @Type(() => AddressDto)
-  address: AddressDto;
-
+  address: AddressDto
 }
 
 export class MemberFilterDto {
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  page?: number
 
   @IsOptional()
   @IsInt()
   @Min(1)
-  page?: number;
-
-  @IsOptional()
-  @IsInt()
-  @Min(1)
-  limit?: number;
+  limit?: number
 
   @IsOptional()
   @IsEnum(SortMemberBy)
-  sortBy?: SortMemberBy;
-
+  sortBy?: SortMemberBy
 }

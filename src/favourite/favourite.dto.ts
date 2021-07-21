@@ -1,29 +1,27 @@
-import { IsMongoId, IsNotEmpty, IsNumber, IsString, Min } from 'class-validator'
+import {IsMongoId, IsNotEmpty, IsNumber, IsString, Min} from 'class-validator'
 
 export class FavouriteProductDto {
-
   @IsMongoId()
-  id: string;
+  id: string
 
   @IsString()
   @IsNotEmpty()
-  name: string;
+  name: string
 
   @IsString()
   @IsNotEmpty()
-  image: string;
+  image: string
 
   @IsNumber()
   @Min(1)
   @IsNotEmpty()
-  price: number;
+  price: number
 
   @IsString()
   @IsNotEmpty()
-  description: string;
+  description: string
 
   @IsString()
   @IsNotEmpty()
-  slug: string;
-
+  slug: string
 }

@@ -1,57 +1,65 @@
-import { IsEnum, IsInt, IsMongoId, IsNumber, IsOptional, IsString, Max, Min, MinLength } from "class-validator"
+import {
+  IsEnum,
+  IsInt,
+  IsMongoId,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+  MinLength,
+} from 'class-validator'
 
-import { SortReviewsBy } from "src/review/review.input"
+import {SortReviewsBy} from 'src/review/review.input'
 
 export class CreateReviewDto {
   @IsString()
   @IsMongoId()
-  productId: string;
+  productId: string
 
   @IsString()
   @MinLength(3)
-  comment: string;
+  comment: string
 
   @IsInt()
   @Min(1)
   @Max(5)
-  rating: number;
+  rating: number
 }
 
 export class UpdateReviewDto {
-
   @IsString()
   @IsMongoId()
-  reviewId: string;
+  reviewId: string
 
   @IsOptional()
   @IsString()
   @MinLength(3)
-  comment: string;
+  comment: string
 
   @IsOptional()
   @IsInt()
   @Min(1)
   @Max(5)
-  rating: number;
+  rating: number
 }
 
 export class GetReviewsDto {
   @IsOptional()
   @IsNumber()
   @Min(1)
-
-  limit?: number;
+  limit?: number
 
   @IsOptional()
   @IsNumber()
   @Min(1)
-  page?: number;
+  page?: number
 
   @IsMongoId()
   @IsOptional()
-  productId?: string;
+  productId?: string
 
   @IsEnum(SortReviewsBy)
   @IsOptional()
-  sortBy?: SortReviewsBy;
+  sortBy?: SortReviewsBy
 }

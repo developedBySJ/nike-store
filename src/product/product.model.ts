@@ -1,82 +1,77 @@
-import { Field, Float, ID, Int, ObjectType } from '@nestjs/graphql'
+import {Field, Float, ID, Int, ObjectType} from '@nestjs/graphql'
 
-import { ReviewMemberType } from 'src/review/review.model'
+import {ReviewMemberType} from 'src/review/review.model'
 
 @ObjectType('ProductReview')
 class ProductReviewType {
+  @Field((type) => ID)
+  id: string
 
-  @Field(type => ID)
-  id: string;
-
-  @Field(type => ReviewMemberType)
-  member: ReviewMemberType;
-
-  @Field()
-  rating: number;
+  @Field((type) => ReviewMemberType)
+  member: ReviewMemberType
 
   @Field()
-  comment: string;
+  rating: number
 
   @Field()
-  createdAt: Date;
+  comment: string
 
+  @Field()
+  createdAt: Date
 }
 
-@ObjectType("Product")
+@ObjectType('Product')
 export class ProductType {
-
-  @Field(type => ID)
-  id: string;
+  @Field((type) => ID)
+  id: string
   @Field()
-  name: string;
+  name: string
 
-  @Field(type => [String])
-  images: string[];
-
-  @Field()
-  brand: string;
+  @Field((type) => [String])
+  images: string[]
 
   @Field()
-  category: string;
+  brand: string
 
   @Field()
-  description: string;
+  category: string
 
   @Field()
-  details: string;
+  description: string
 
   @Field()
-  ratings: number;
+  details: string
 
-  @Field(type => Int)
+  @Field()
+  ratings: number
+
+  @Field((type) => Int)
   numOfReviews: number
 
-  @Field(type => Float)
-  price: number;
+  @Field((type) => Float)
+  price: number
 
-  @Field(type => Float)
-  mrp: number;
+  @Field((type) => Float)
+  mrp: number
 
-  @Field(type => Int)
-  availableStock: number;
+  @Field((type) => Int)
+  availableStock: number
 
-  @Field({ nullable: true })
-  material?: string;
-
-  @Field()
-  slug: string;
+  @Field({nullable: true})
+  material?: string
 
   @Field()
-  createdAt: string;
+  slug: string
 
-  @Field(type => [String])
-  size: string[];
+  @Field()
+  createdAt: string
 
+  @Field((type) => [String])
+  size: string[]
 
-  @Field(type => [String])
-  fit: string[];
+  @Field((type) => [String])
+  fit: string[]
 
-  @Field(type => [ProductReviewType], { nullable: true })
-  reviews: ProductReviewType[];
-
+  @Field((type) => [ProductReviewType], {nullable: true})
+  reviews: ProductReviewType[]
 }

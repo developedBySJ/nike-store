@@ -1,5 +1,5 @@
-import { JwtPayload } from "src/auth/types";
-import { SortReviewsBy } from "./review.input";
+import {JwtPayload} from 'src/auth/types'
+import {SortReviewsBy} from './review.input'
 
 export interface IReviewMember {
   id: string
@@ -9,30 +9,30 @@ export interface IReviewMember {
 }
 
 export interface ICreateReview {
-  member: JwtPayload;
-  productId: string;
-  comment: string;
-  rating: number;
+  member: JwtPayload
+  productId: string
+  comment: string
+  rating: number
 }
 
 export interface IUpdateReview {
-  viewer: JwtPayload;
-  reviewId: string;
+  viewer: JwtPayload
+  reviewId: string
   data: {
-    comment: string;
+    comment: string
     rating: number
   }
 }
 export interface IReviewFilter {
-  limit?: number;
-  page?: number;
-  productId?: string;
-  sortBy?: SortReviewsBy;
+  limit?: number
+  page?: number
+  productId?: string
+  sortBy?: SortReviewsBy
 }
 
 export interface IPreSave {
-  productId: string;
-  isNew: boolean;
-  rating: number;
-  prevRating: number;
+  productId: string
+  isNew: boolean
+  rating: number
+  prevRating: number
 }

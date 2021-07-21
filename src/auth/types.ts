@@ -1,12 +1,12 @@
 export interface UserPayload {
-  id: string;
-  email: string;
-  isAdmin: boolean;
-  iat: number;
-  exp: string;
+  id: string
+  email: string
+  isAdmin: boolean
+  iat: number
+  exp: string
 }
 export interface JwtPayload {
-  id: string;
-  email: string;
-  isAdmin: boolean;
+  id: string
+  email: string
+  isAdmin: boolean
 }

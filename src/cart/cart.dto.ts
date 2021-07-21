@@ -1,54 +1,58 @@
-import { IsInt, IsMongoId, IsNotEmpty, IsNumber, IsString, Min, MinLength } from 'class-validator'
+import {
+  IsInt,
+  IsMongoId,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  Min,
+  MinLength,
+} from 'class-validator'
 
 export class CartProductDto {
-
   @IsMongoId()
-  id: string;
+  id: string
 
   @IsString()
   @IsNotEmpty()
-  name: string;
+  name: string
 
   @IsString()
   @IsNotEmpty()
-  image: string;
+  image: string
 
   @IsNumber()
   @Min(1)
   @IsNotEmpty()
-  price: number;
+  price: number
 
   @IsString()
   @IsNotEmpty()
-  description: string;
+  description: string
 
   @IsString()
   @IsNotEmpty()
-  slug: string;
+  slug: string
 
   @IsString()
   @IsNotEmpty()
-  size: string;
+  size: string
 
   @IsInt()
   @Min(1)
   @IsNotEmpty()
-  qty: number;
-
+  qty: number
 }
 export class AddToCartDto {
-
   @IsMongoId()
-  id: string;
+  id: string
 
   @IsInt()
   @Min(1)
   @IsNotEmpty()
-  qty: number;
+  qty: number
 
   @IsString()
   @MinLength(1)
   @IsNotEmpty()
-  size: string;
-
+  size: string
 }
