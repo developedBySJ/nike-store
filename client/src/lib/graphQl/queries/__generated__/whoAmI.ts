@@ -8,16 +8,16 @@
 // ====================================================
 
 export interface whoAmI_whoAmI {
-  __typename: "Viewer";
-  avatar: string | null;
-  didRequest: boolean;
-  email: string | null;
-  firstName: string | null;
-  id: string | null;
-  isAdmin: boolean | null;
-  lastName: string | null;
+  __typename: 'Viewer'
+  avatar: string | null
+  didRequest: boolean
+  email: string | null
+  firstName: string | null
+  id: string | null
+  isAdmin: boolean | null
+  lastName: string | null
 }
 
 export interface whoAmI {
-  whoAmI: whoAmI_whoAmI;
+  whoAmI: whoAmI_whoAmI
 }

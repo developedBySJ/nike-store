@@ -1,8 +1,10 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const UPDATE_CART_PRODUCT_QTY = gql`
-  mutation UpdateCartProductQty($productId: ID!,$qty:Int!,$size:String!) {
-    updateCartProductQty(UpdateCartProductQtyInput:{id:$productId,qty:$qty,size:$size}) {
+  mutation UpdateCartProductQty($productId: ID!, $qty: Int!, $size: String!) {
+    updateCartProductQty(
+      UpdateCartProductQtyInput: {id: $productId, qty: $qty, size: $size}
+    ) {
       id
       createdAt
       products {
@@ -19,4 +21,4 @@ const UPDATE_CART_PRODUCT_QTY = gql`
   }
 `
 
-export { UPDATE_CART_PRODUCT_QTY }
+export {UPDATE_CART_PRODUCT_QTY}

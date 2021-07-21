@@ -8,22 +8,22 @@
 // ====================================================
 
 export interface GetMyFavourites_getMyFavourites_products {
-  __typename: "FavouriteProduct";
-  description: string;
-  id: string;
-  image: string;
-  name: string;
-  price: number;
-  slug: string;
+  __typename: 'FavouriteProduct'
+  description: string
+  id: string
+  image: string
+  name: string
+  price: number
+  slug: string
 }
 
 export interface GetMyFavourites_getMyFavourites {
-  __typename: "Favourite";
-  createdAt: string;
-  id: string;
-  products: GetMyFavourites_getMyFavourites_products[];
+  __typename: 'Favourite'
+  createdAt: string
+  id: string
+  products: GetMyFavourites_getMyFavourites_products[]
 }
 
 export interface GetMyFavourites {
-  getMyFavourites: GetMyFavourites_getMyFavourites;
+  getMyFavourites: GetMyFavourites_getMyFavourites
 }

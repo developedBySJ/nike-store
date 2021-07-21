@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const GET_MEMBER_BY_ID = gql`
   query GetMemberById($id: ID!) {
@@ -19,7 +19,6 @@ const GET_MEMBER_BY_ID = gql`
       lastName
     }
   }
-
 `
 
-export { GET_MEMBER_BY_ID }
+export {GET_MEMBER_BY_ID}

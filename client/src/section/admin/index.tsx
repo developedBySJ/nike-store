@@ -1,12 +1,12 @@
-import React from 'react';
-import {Route, Switch, useRouteMatch} from 'react-router-dom';
+import React from 'react'
+import {Route, Switch, useRouteMatch} from 'react-router-dom'
 
-import {MemberTable} from './MemberTable';
-import {OrderTable} from './OrderTable';
-import {ProductTable} from './ProductTable';
+import {MemberTable} from './MemberTable'
+import {OrderTable} from './OrderTable'
+import {ProductTable} from './ProductTable'
 
 const Admin = () => {
-  let {path} = useRouteMatch();
+  let {path} = useRouteMatch()
   return (
     <Switch>
       <Route path={`${path}/members`} exact>
@@ -21,7 +21,7 @@ const Admin = () => {
         <ProductTable />
       </Route>
     </Switch>
-  );
-};
+  )
+}
 
-export {Admin};
+export {Admin}

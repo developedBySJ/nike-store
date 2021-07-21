@@ -1,22 +1,20 @@
-const HEADER_CONFIG: { title: string, link: string, onClick?: Function }[] = [
+const HEADER_CONFIG: {title: string; link: string; onClick?: Function}[] = [
   {
-    title: "Shoes",
-    link: "/shop?category=shoes",
+    title: 'Shoes',
+    link: '/shop?category=shoes',
   },
   {
-    title: "Clothing",
-    link: "/shop?category=clothing",
+    title: 'Clothing',
+    link: '/shop?category=clothing',
   },
   {
-    title: "Accessories",
-    link: "/shop?category=accessories",
+    title: 'Accessories',
+    link: '/shop?category=accessories',
   },
   {
-    title: "Sale",
-    link: "/shop",
+    title: 'Sale',
+    link: '/shop',
   },
-
 ]
 
-
-export { HEADER_CONFIG }
+export {HEADER_CONFIG}

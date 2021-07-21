@@ -8,16 +8,16 @@
 // ====================================================
 
 export interface Logout_logOut {
-  __typename: "Viewer";
-  avatar: string | null;
-  didRequest: boolean;
-  email: string | null;
-  firstName: string | null;
-  id: string | null;
-  isAdmin: boolean | null;
-  lastName: string | null;
+  __typename: 'Viewer'
+  avatar: string | null
+  didRequest: boolean
+  email: string | null
+  firstName: string | null
+  id: string | null
+  isAdmin: boolean | null
+  lastName: string | null
 }
 
 export interface Logout {
-  logOut: Logout_logOut;
+  logOut: Logout_logOut
 }

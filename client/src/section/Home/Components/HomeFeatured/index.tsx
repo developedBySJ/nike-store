@@ -1,35 +1,35 @@
-import React from "react";
-import { H5, Label1, Paragraph2, Display2 } from "baseui/typography";
-import { Button } from "baseui/button";
-import { useStyletron } from "baseui";
+import React from 'react'
+import {H5, Label1, Paragraph2, Display2} from 'baseui/typography'
+import {Button} from 'baseui/button'
+import {useStyletron} from 'baseui'
 
-import NikeVideo from "../../../../lib/assets/videos/nike.mp4";
-import { useHistory } from "react-router-dom";
+import NikeVideo from '../../../../lib/assets/videos/nike.mp4'
+import {useHistory} from 'react-router-dom'
 
 const HomeFeatured = () => {
-  const [css, theme] = useStyletron();
-  const productVideo = React.useRef<HTMLVideoElement>(null);
-  const histroy = useHistory();
+  const [css, theme] = useStyletron()
+  const productVideo = React.useRef<HTMLVideoElement>(null)
+  const histroy = useHistory()
   React.useEffect(() => {
-    const ref = productVideo.current;
+    const ref = productVideo.current
     if (!ref) {
-      return;
+      return
     }
-    ref.defaultMuted = true;
-    ref.muted = true;
-  }, []);
+    ref.defaultMuted = true
+    ref.muted = true
+  }, [])
   return (
     <>
-      <H5 margin="2rem 0" $style={{ fontWeight: "normal" }}>
+      <H5 margin="2rem 0" $style={{fontWeight: 'normal'}}>
         Featured
       </H5>
-      <figure className={css({ position: "relative" })}>
+      <figure className={css({position: 'relative'})}>
         <video
           className={css({
-            width: "100%",
-            height: "80vh",
-            minHeight: "400px",
-            objectFit: "cover",
+            width: '100%',
+            height: '80vh',
+            minHeight: '400px',
+            objectFit: 'cover',
           })}
           muted={true}
           loop
@@ -40,10 +40,10 @@ const HomeFeatured = () => {
         </video>
         <figcaption
           className={css({
-            position: "absolute",
-            bottom: "0",
-            left: "0",
-            padding: "0 2rem 2rem 2rem",
+            position: 'absolute',
+            bottom: '0',
+            left: '0',
+            padding: '0 2rem 2rem 2rem',
             color: theme.colors.white,
           })}
         >
@@ -52,9 +52,9 @@ const HomeFeatured = () => {
             $style={{
               fontWeight: 900,
               color: theme.colors.white,
-              letterSpacing: "-4px",
-              fontSize: "clamp(42px,8vw,80px)",
-              lineHeight: "100%",
+              letterSpacing: '-4px',
+              fontSize: 'clamp(42px,8vw,80px)',
+              lineHeight: '100%',
             }}
           >
             BRAVE NEW WORLD
@@ -66,9 +66,9 @@ const HomeFeatured = () => {
           <Button
             kind="secondary"
             shape="pill"
-            $style={{ padding: "0.75rem 2rem", backgroundColor: "#fff" }}
+            $style={{padding: '0.75rem 2rem', backgroundColor: '#fff'}}
             onClick={() =>
-              histroy.push("/shop/nike-pro-mens-reissue-crew-fleece-66ec")
+              histroy.push('/shop/nike-pro-mens-reissue-crew-fleece-66ec')
             }
           >
             Shop
@@ -76,7 +76,7 @@ const HomeFeatured = () => {
         </figcaption>
       </figure>
     </>
-  );
-};
+  )
+}
 
-export { HomeFeatured };
+export {HomeFeatured}

@@ -1,23 +1,23 @@
-import React from 'react';
-import {useStyletron} from 'baseui';
+import React from 'react'
+import {useStyletron} from 'baseui'
 import {
   StatefulDataTable,
   BooleanColumn,
   StringColumn,
   DatetimeColumn,
-} from 'baseui/data-table';
-import {useQuery} from '@apollo/client';
-import {Block} from 'baseui/block';
+} from 'baseui/data-table'
+import {useQuery} from '@apollo/client'
+import {Block} from 'baseui/block'
 
-import {GET_MEMBERS} from '../../../lib/graphQl/queries/getMembers';
+import {GET_MEMBERS} from '../../../lib/graphQl/queries/getMembers'
 import {
   GetMembers,
   GetMembersVariables,
-} from '../../../lib/graphQl/queries/getMembers/__generated__/GetMembers';
-import {LoadingSnipper} from '../../../lib/Components';
-import {displayNotification} from '../../../lib/utils/displayNotification';
+} from '../../../lib/graphQl/queries/getMembers/__generated__/GetMembers'
+import {LoadingSnipper} from '../../../lib/Components'
+import {displayNotification} from '../../../lib/utils/displayNotification'
 
-type RowDataT = [string, string, string, string, Date, boolean];
+type RowDataT = [string, string, string, string, Date, boolean]
 
 const columns = [
   StringColumn({
@@ -45,10 +45,10 @@ const columns = [
     title: 'boolean',
     mapDataToValue: (data: RowDataT) => data[5],
   }),
-];
+]
 
 const MemberTable = () => {
-  const [css] = useStyletron();
+  const [css] = useStyletron()
 
   const {data, loading, error} = useQuery<GetMembers, GetMembersVariables>(
     GET_MEMBERS,
@@ -57,13 +57,13 @@ const MemberTable = () => {
         limit: 24,
       },
     },
-  );
+  )
 
   if (loading || error || !data) {
     if (error || (!loading && !data)) {
-      displayNotification('negative', 'Something went wrong!');
+      displayNotification('negative', 'Something went wrong!')
     }
-    return <LoadingSnipper />;
+    return <LoadingSnipper />
   }
   const rows = data?.getMembers.map((member) => ({
     id: member.id,
@@ -75,12 +75,12 @@ const MemberTable = () => {
       member.dateOfBirth,
       member.isAdmin,
     ],
-  }));
+  }))
   return (
     <Block className={css({height: '100vh', width: '100%'})}>
       {data && <StatefulDataTable columns={columns} rows={rows} />}
     </Block>
-  );
-};
+  )
+}
 
-export {MemberTable};
+export {MemberTable}

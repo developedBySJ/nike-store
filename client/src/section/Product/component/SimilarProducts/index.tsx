@@ -1,33 +1,33 @@
-import { useLazyQuery, useQuery } from "@apollo/client";
-import React from "react";
+import {useLazyQuery, useQuery} from '@apollo/client'
+import React from 'react'
 import {
   IProductCardProps,
   ProductCard,
   ProductCardSkeleton,
   ProductCardSlider,
-} from "../../../../lib/Components";
-import { GET_PRODUCTS } from "../../../../lib/graphQl/queries/getProducts";
+} from '../../../../lib/Components'
+import {GET_PRODUCTS} from '../../../../lib/graphQl/queries/getProducts'
 import {
   GetProducts,
   GetProductsVariables,
-} from "../../../../lib/graphQl/queries/__generated__/GetProducts";
-import { sortImgArr } from "../../../../lib/utils/sortImgArr";
+} from '../../../../lib/graphQl/queries/__generated__/GetProducts'
+import {sortImgArr} from '../../../../lib/utils/sortImgArr'
 
 interface ISimilarProductProps {
-  category: string;
-  productId: string;
+  category: string
+  productId: string
 }
 
-const SimilarProducts = ({ category, productId }: ISimilarProductProps) => {
-  const { data, error, loading } = useQuery<GetProducts, GetProductsVariables>(
+const SimilarProducts = ({category, productId}: ISimilarProductProps) => {
+  const {data, error, loading} = useQuery<GetProducts, GetProductsVariables>(
     GET_PRODUCTS,
-    { variables: { category, limit: 6 } }
-  );
+    {variables: {category, limit: 6}},
+  )
   const cards = data?.getProducts
     ? data?.getProducts
-        .filter(({ id }) => id !== productId)
-        .map(({ description, images, name, price, slug }) => {
-          const img = sortImgArr(images);
+        .filter(({id}) => id !== productId)
+        .map(({description, images, name, price, slug}) => {
+          const img = sortImgArr(images)
           return (
             <ProductCard
               description={description}
@@ -37,9 +37,9 @@ const SimilarProducts = ({ category, productId }: ISimilarProductProps) => {
               url={`/shop/${slug}`}
               key={slug}
             />
-          );
+          )
         })
-    : [];
+    : []
   return (
     <ProductCardSlider
       error={!!error}
@@ -48,7 +48,7 @@ const SimilarProducts = ({ category, productId }: ISimilarProductProps) => {
       skeltonCard={<ProductCardSkeleton />}
       title="YOU MIGHT ALSO LIKE"
     />
-  );
-};
+  )
+}
 
-export { SimilarProducts };
+export {SimilarProducts}

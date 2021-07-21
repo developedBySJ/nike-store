@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const GET_ORDER_BY_ID = gql`
   query GetOrderById($id: ID!) {
@@ -37,4 +37,4 @@ const GET_ORDER_BY_ID = gql`
   }
 `
 
-export { GET_ORDER_BY_ID }
+export {GET_ORDER_BY_ID}

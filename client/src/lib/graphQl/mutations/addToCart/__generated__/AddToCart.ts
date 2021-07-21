@@ -8,28 +8,28 @@
 // ====================================================
 
 export interface AddToCart_addToCart_products {
-  __typename: "CartProduct";
-  id: string;
-  image: string;
-  name: string;
-  description: string;
-  price: number;
-  qty: number;
-  size: string;
-  slug: string;
+  __typename: 'CartProduct'
+  id: string
+  image: string
+  name: string
+  description: string
+  price: number
+  qty: number
+  size: string
+  slug: string
 }
 
 export interface AddToCart_addToCart {
-  __typename: "Cart";
-  products: AddToCart_addToCart_products[];
+  __typename: 'Cart'
+  products: AddToCart_addToCart_products[]
 }
 
 export interface AddToCart {
-  addToCart: AddToCart_addToCart;
+  addToCart: AddToCart_addToCart
 }
 
 export interface AddToCartVariables {
-  productId: string;
-  qty: number;
-  size: string;
+  productId: string
+  qty: number
+  size: string
 }

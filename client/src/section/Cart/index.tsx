@@ -1,42 +1,42 @@
-import {useLazyQuery} from '@apollo/client';
-import {Block} from 'baseui/block';
-import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
-import {Spinner} from 'baseui/spinner';
-import {H5, H6, Paragraph1} from 'baseui/typography';
-import React from 'react';
-import {useHistory} from 'react-router-dom';
+import {useLazyQuery} from '@apollo/client'
+import {Block} from 'baseui/block'
+import {FlexGrid, FlexGridItem} from 'baseui/flex-grid'
+import {Spinner} from 'baseui/spinner'
+import {H5, H6, Paragraph1} from 'baseui/typography'
+import React from 'react'
+import {useHistory} from 'react-router-dom'
 
-import {GET_MY_CART} from '../../lib/graphQl/queries/getMyCart';
-import {GetMyCart} from '../../lib/graphQl/queries/getMyCart/__generated__/GetMyCart';
-import {Viewer} from '../../lib/types';
-import {CartProductCard, Summary} from './components';
+import {GET_MY_CART} from '../../lib/graphQl/queries/getMyCart'
+import {GetMyCart} from '../../lib/graphQl/queries/getMyCart/__generated__/GetMyCart'
+import {Viewer} from '../../lib/types'
+import {CartProductCard, Summary} from './components'
 
 interface ICartProps {
-  viewer: Viewer;
-  loading: boolean;
+  viewer: Viewer
+  loading: boolean
 }
 
 const Cart = ({viewer, loading}: ICartProps) => {
-  const {id, didRequest} = viewer;
+  const {id, didRequest} = viewer
 
-  const histroy = React.useRef(useHistory());
+  const histroy = React.useRef(useHistory())
 
   const [
     _fetchMyCart,
     {data, loading: dataLoading, refetch},
-  ] = useLazyQuery<GetMyCart>(GET_MY_CART, {fetchPolicy: 'no-cache'});
+  ] = useLazyQuery<GetMyCart>(GET_MY_CART, {fetchPolicy: 'no-cache'})
 
-  const fetchMyCart = React.useRef(_fetchMyCart);
+  const fetchMyCart = React.useRef(_fetchMyCart)
 
   React.useEffect(() => {
     if (didRequest && !id) {
-      histroy.current.push('/login');
+      histroy.current.push('/login')
     }
 
     if (id) {
-      fetchMyCart.current();
+      fetchMyCart.current()
     }
-  }, [id, didRequest]);
+  }, [id, didRequest])
 
   if (loading || dataLoading) {
     return (
@@ -52,10 +52,10 @@ const Cart = ({viewer, loading}: ICartProps) => {
           <H6 marginTop="1rem">Fetching Your Cart</H6>
         </Block>
       </Block>
-    );
+    )
   }
 
-  const products = data?.getMyCart.products;
+  const products = data?.getMyCart.products
 
   return products ? (
     <>
@@ -88,7 +88,7 @@ const Cart = ({viewer, loading}: ICartProps) => {
                 key={`${product.id}-${i}`}
                 refetch={refetch}
               />
-            );
+            )
           })}
         </FlexGridItem>
         <FlexGridItem display="none">
@@ -109,7 +109,7 @@ const Cart = ({viewer, loading}: ICartProps) => {
         </FlexGridItem>
       </FlexGrid>
     </>
-  ) : null;
-};
+  ) : null
+}
 
-export {Cart as default};
+export {Cart as default}

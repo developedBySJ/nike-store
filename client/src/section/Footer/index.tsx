@@ -1,20 +1,20 @@
-import { useStyletron } from "baseui";
-import { Block } from "baseui/block";
-import { Paragraph3, Paragraph4 } from "baseui/typography";
-import React from "react";
-import { footerConfig } from "./config";
-import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
+import {useStyletron} from 'baseui'
+import {Block} from 'baseui/block'
+import {Paragraph3, Paragraph4} from 'baseui/typography'
+import React from 'react'
+import {footerConfig} from './config'
+import {FlexGrid, FlexGridItem} from 'baseui/flex-grid'
 const Footer = () => {
-  const [css, theme] = useStyletron();
+  const [css, theme] = useStyletron()
 
   const footerItems = footerConfig.map((i, index) => (
     <FlexGridItem key={index}>
       {i.map((item, itemIndex) => (
         <Paragraph4
-          color={item.type === "Primary" ? "#fff" : "#a0a0a0"}
+          color={item.type === 'Primary' ? '#fff' : '#a0a0a0'}
           marginBottom="8px"
           className={css({
-            fontWeight: item.type === "Primary" ? "bolder" : "normal",
+            fontWeight: item.type === 'Primary' ? 'bolder' : 'normal',
           })}
           key={`footer-item-${itemIndex}`}
         >
@@ -22,19 +22,19 @@ const Footer = () => {
         </Paragraph4>
       ))}
     </FlexGridItem>
-  ));
+  ))
 
   return (
     <footer
       className={css({
         backgroundColor: theme.colors.primary,
         color: theme.colors.white,
-        padding: "32px 32px 16px 32px",
+        padding: '32px 32px 16px 32px',
       })}
     >
       <FlexGrid
         flexGridColumnCount={[1, 2, 3, 3]}
-        width={["100%", "100%", "90%", "40%"]}
+        width={['100%', '100%', '90%', '40%']}
       >
         {footerItems}
       </FlexGrid>
@@ -69,7 +69,7 @@ const Footer = () => {
         </FlexGridItem>
       </FlexGrid>
     </footer>
-  );
-};
+  )
+}
 
-export { Footer };
+export {Footer}

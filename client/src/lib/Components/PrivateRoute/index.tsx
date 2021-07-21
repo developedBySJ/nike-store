@@ -1,40 +1,40 @@
-import React from 'react';
+import React from 'react'
 import {
   Route,
   RouteComponentProps,
   RouteProps,
   useHistory,
-} from 'react-router-dom';
-import {Viewer} from '../../types';
-import {LoadingSnipper} from '../LoadingSnipper';
+} from 'react-router-dom'
+import {Viewer} from '../../types'
+import {LoadingSnipper} from '../LoadingSnipper'
 
 interface IPrivateRouterProps extends RouteProps {
-  viewer: Viewer;
+  viewer: Viewer
   component:
     | React.ComponentType<RouteComponentProps<any> & {viewer: Viewer}>
-    | React.ComponentType<{viewer: Viewer}>;
+    | React.ComponentType<{viewer: Viewer}>
 }
 
 export type PrivateRouteComponent<T = {}> = React.ComponentType<
   T & {viewer: Viewer}
->;
+>
 
 const PrivateRoute: React.FC<IPrivateRouterProps> = ({
   viewer,
   component: Component,
   ...rest
 }) => {
-  const {didRequest, id} = viewer;
-  const histroy = React.useRef(useHistory());
-  const [authorized, setAuthorized] = React.useState(false);
+  const {didRequest, id} = viewer
+  const histroy = React.useRef(useHistory())
+  const [authorized, setAuthorized] = React.useState(false)
   React.useEffect(() => {
     if (didRequest && !id) {
-      histroy.current.push('/login');
+      histroy.current.push('/login')
     }
     if (id) {
-      setAuthorized(true);
+      setAuthorized(true)
     }
-  }, [id, didRequest]);
+  }, [id, didRequest])
   return authorized ? (
     <Route
       {...rest}
@@ -44,7 +44,7 @@ const PrivateRoute: React.FC<IPrivateRouterProps> = ({
     />
   ) : (
     <LoadingSnipper />
-  );
-};
+  )
+}
 
-export {PrivateRoute};
+export {PrivateRoute}

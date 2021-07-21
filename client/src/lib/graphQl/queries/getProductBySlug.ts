@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const GET_PRODUCT_BY_ID = gql`
   query GetProductBySlug($slug: String!) {
@@ -34,7 +34,6 @@ const GET_PRODUCT_BY_ID = gql`
       slug
     }
   }
-
 `
 
-export { GET_PRODUCT_BY_ID }
+export {GET_PRODUCT_BY_ID}

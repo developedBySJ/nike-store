@@ -1,27 +1,27 @@
-import React from 'react';
-import {AspectRatioBox, AspectRatioBoxBody} from 'baseui/aspect-ratio-box';
-import {useStyletron} from 'baseui';
-import {StyledLink} from 'baseui/link';
-import {Link} from 'react-router-dom';
-import {useMutation} from '@apollo/client';
-import {Label1, Paragraph1} from 'baseui/typography';
-import {Block} from 'baseui/block';
-import {Select, SelectOverrides} from 'baseui/select';
+import React from 'react'
+import {AspectRatioBox, AspectRatioBoxBody} from 'baseui/aspect-ratio-box'
+import {useStyletron} from 'baseui'
+import {StyledLink} from 'baseui/link'
+import {Link} from 'react-router-dom'
+import {useMutation} from '@apollo/client'
+import {Label1, Paragraph1} from 'baseui/typography'
+import {Block} from 'baseui/block'
+import {Select, SelectOverrides} from 'baseui/select'
 
-import {GetMyCart_getMyCart_products} from '../../../../lib/graphQl/queries/getMyCart/__generated__/GetMyCart';
-import {formatPrice} from '../../../../lib/utils/formatPrice';
-import {REMOVE_FROM_CART} from '../../../../lib/graphQl/mutations/removeFromCart';
+import {GetMyCart_getMyCart_products} from '../../../../lib/graphQl/queries/getMyCart/__generated__/GetMyCart'
+import {formatPrice} from '../../../../lib/utils/formatPrice'
+import {REMOVE_FROM_CART} from '../../../../lib/graphQl/mutations/removeFromCart'
 import {
   RemoveFromCart,
   RemoveFromCartVariables,
-} from '../../../../lib/graphQl/mutations/removeFromCart/__generated__/RemoveFromCart';
-import {UpdateCartProductQty} from '../../../../lib/graphQl/mutations/updateCartProductQtyInput/__generated__';
-import {UpdateCartProductQtyVariables} from '../../../../lib/graphQl/mutations/updateCartProductQtyInput/__generated__/UpdateCartProductQty';
-import {UPDATE_CART_PRODUCT_QTY} from '../../../../lib/graphQl/mutations/updateCartProductQtyInput';
-import {displayNotification} from '../../../../lib/utils/displayNotification';
+} from '../../../../lib/graphQl/mutations/removeFromCart/__generated__/RemoveFromCart'
+import {UpdateCartProductQty} from '../../../../lib/graphQl/mutations/updateCartProductQtyInput/__generated__'
+import {UpdateCartProductQtyVariables} from '../../../../lib/graphQl/mutations/updateCartProductQtyInput/__generated__/UpdateCartProductQty'
+import {UPDATE_CART_PRODUCT_QTY} from '../../../../lib/graphQl/mutations/updateCartProductQtyInput'
+import {displayNotification} from '../../../../lib/utils/displayNotification'
 
 interface ICartProductCardProps extends GetMyCart_getMyCart_products {
-  refetch?: Function;
+  refetch?: Function
 }
 
 const CartProductCard = ({
@@ -35,28 +35,28 @@ const CartProductCard = ({
   id,
   refetch,
 }: ICartProductCardProps) => {
-  const [css, theme] = useStyletron();
+  const [css, theme] = useStyletron()
 
   const [removeFromCart, {}] = useMutation<
     RemoveFromCart,
     RemoveFromCartVariables
   >(REMOVE_FROM_CART, {
     onCompleted: () => {
-      refetch && refetch();
+      refetch && refetch()
     },
-  });
+  })
 
   const [updateCartProduct, {}] = useMutation<
     UpdateCartProductQty,
     UpdateCartProductQtyVariables
   >(UPDATE_CART_PRODUCT_QTY, {
     onCompleted: () => {
-      refetch && refetch();
+      refetch && refetch()
     },
     onError: () => {
-      displayNotification('negative', 'Something Went Wrong!');
+      displayNotification('negative', 'Something Went Wrong!')
     },
-  });
+  })
 
   const overRides: SelectOverrides = {
     Root: {
@@ -79,7 +79,7 @@ const CartProductCard = ({
         boxShadow: 'none',
       }),
     },
-  };
+  }
 
   const Quntity = () => {
     return (
@@ -95,16 +95,16 @@ const CartProductCard = ({
         value={[{label: qty.toString(), id: qty}]}
         placeholder="Qty"
         onChange={(e) => {
-          const qty = Number(e.option?.id);
-          console.log(name + qty);
+          const qty = Number(e.option?.id)
+          console.log(name + qty)
           if (qty) {
-            updateCartProduct({variables: {productId: id, size, qty}});
+            updateCartProduct({variables: {productId: id, size, qty}})
           }
         }}
         overrides={overRides}
       />
-    );
-  };
+    )
+  }
 
   return (
     <Block
@@ -171,7 +171,7 @@ const CartProductCard = ({
         </Block>
       </Block>
     </Block>
-  );
-};
+  )
+}
 
-export {CartProductCard};
+export {CartProductCard}

@@ -1,26 +1,26 @@
-import {Drawer} from 'baseui/drawer';
-import {H4, H5, H6, Label1} from 'baseui/typography';
-import React from 'react';
-import {Viewer} from '../../../../lib/types';
-import User from '../../../../lib/assets/icons/User.svg';
-import {Block} from 'baseui/block';
-import {StyledLink} from 'baseui/link';
-import {HEADER_CONFIG} from '../../lib';
-import {ChevronRight} from 'baseui/icon';
-import Heart from '../../../../lib/assets/icons/Heart.svg';
-import ShoppingBag from '../../../../lib/assets/icons/ShoppingBag.svg';
-import {Link, useHistory} from 'react-router-dom';
-import {useStyletron} from 'baseui';
-import {Button} from 'baseui/button';
+import {Drawer} from 'baseui/drawer'
+import {H4, H5, H6, Label1} from 'baseui/typography'
+import React from 'react'
+import {Viewer} from '../../../../lib/types'
+import User from '../../../../lib/assets/icons/User.svg'
+import {Block} from 'baseui/block'
+import {StyledLink} from 'baseui/link'
+import {HEADER_CONFIG} from '../../lib'
+import {ChevronRight} from 'baseui/icon'
+import Heart from '../../../../lib/assets/icons/Heart.svg'
+import ShoppingBag from '../../../../lib/assets/icons/ShoppingBag.svg'
+import {Link, useHistory} from 'react-router-dom'
+import {useStyletron} from 'baseui'
+import {Button} from 'baseui/button'
 interface IMobMenuProps {
-  viewer: Viewer;
-  isOpen: boolean;
-  onClose: () => void;
+  viewer: Viewer
+  isOpen: boolean
+  onClose: () => void
 }
 
 const MobMenu = ({viewer, onClose, isOpen}: IMobMenuProps) => {
-  const [css, theme] = useStyletron();
-  const histroy = useHistory();
+  const [css, theme] = useStyletron()
+  const histroy = useHistory()
   const cta = (
     <Block>
       <Button
@@ -28,8 +28,8 @@ const MobMenu = ({viewer, onClose, isOpen}: IMobMenuProps) => {
         shape="pill"
         $style={{width: '48%', margin: '1%'}}
         onClick={() => {
-          histroy.push('/register');
-          onClose();
+          histroy.push('/register')
+          onClose()
         }}
       >
         Join Us
@@ -39,14 +39,14 @@ const MobMenu = ({viewer, onClose, isOpen}: IMobMenuProps) => {
         shape="pill"
         $style={{width: '48%', margin: '1%'}}
         onClick={() => {
-          histroy.push('/login');
-          onClose();
+          histroy.push('/login')
+          onClose()
         }}
       >
         Sign In
       </Button>
     </Block>
-  );
+  )
 
   return (
     <Drawer
@@ -111,7 +111,7 @@ const MobMenu = ({viewer, onClose, isOpen}: IMobMenuProps) => {
                   <ChevronRight size="32px" color="#111" />
                 </Block>
               </Link>
-            );
+            )
           })}
         </Block>
         <Link
@@ -136,7 +136,7 @@ const MobMenu = ({viewer, onClose, isOpen}: IMobMenuProps) => {
         </Link>
       </Block>
     </Drawer>
-  );
-};
+  )
+}
 
-export {MobMenu};
+export {MobMenu}

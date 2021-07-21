@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const ADD_TO_FAVOURITE = gql`
   mutation AddToFavourite($productId: ID!) {
@@ -16,4 +16,4 @@ const ADD_TO_FAVOURITE = gql`
   }
 `
 
-export { ADD_TO_FAVOURITE }
+export {ADD_TO_FAVOURITE}

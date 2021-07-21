@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const REMOVE_FROM_CART = gql`
   mutation RemoveFromCart($productId: ID!, $size: String!) {
@@ -17,6 +17,6 @@ const REMOVE_FROM_CART = gql`
       }
     }
   }
-`;
+`
 
-export { REMOVE_FROM_CART };
+export {REMOVE_FROM_CART}

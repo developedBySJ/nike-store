@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const CREATE_REVIEW = gql`
   mutation CreateReview($comment: String!, $productId: ID!, $rating: Int!) {
@@ -23,6 +23,6 @@ const CREATE_REVIEW = gql`
       rating
     }
   }
-`;
+`
 
-export { CREATE_REVIEW };
+export {CREATE_REVIEW}

@@ -1,16 +1,16 @@
-import React from "react";
-import { useStyletron } from "baseui";
-import { Button } from "baseui/button";
-import { ChevronLeft, ChevronRight } from "baseui/icon";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { H5 } from "baseui/typography";
+import React from 'react'
+import {useStyletron} from 'baseui'
+import {Button} from 'baseui/button'
+import {ChevronLeft, ChevronRight} from 'baseui/icon'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import {H5} from 'baseui/typography'
 
 interface IProductCardSliderProps {
-  cards: JSX.Element[];
-  title: string;
-  isLoading: boolean;
-  error: boolean;
-  skeltonCard: JSX.Element;
+  cards: JSX.Element[]
+  title: string
+  isLoading: boolean
+  error: boolean
+  skeltonCard: JSX.Element
 }
 
 const ProductCardSlider = ({
@@ -20,7 +20,7 @@ const ProductCardSlider = ({
   skeltonCard,
   error,
 }: IProductCardSliderProps) => {
-  const [css, theme] = useStyletron();
+  const [css, theme] = useStyletron()
   const navigation = (
     <>
       <Button
@@ -29,19 +29,19 @@ const ProductCardSlider = ({
         overrides={{
           Root: {
             props: {
-              id: "slider-prev",
+              id: 'slider-prev',
               className: css({
-                "@media screen and (max-width: 700px)": {
-                  visibility: "hidden",
+                '@media screen and (max-width: 700px)': {
+                  visibility: 'hidden',
                 },
-                visibility: "visible",
+                visibility: 'visible',
               }),
             },
             style: {
-              position: "absolute",
-              top: "50%",
-              left: "2%",
-              transform: "translate(0%,-50%)",
+              position: 'absolute',
+              top: '50%',
+              left: '2%',
+              transform: 'translate(0%,-50%)',
             },
           },
         }}
@@ -54,19 +54,19 @@ const ProductCardSlider = ({
         overrides={{
           Root: {
             props: {
-              id: "slider-next",
+              id: 'slider-next',
               className: css({
-                "@media screen and (max-width: 700px)": {
-                  visibility: "hidden",
+                '@media screen and (max-width: 700px)': {
+                  visibility: 'hidden',
                 },
-                visibility: "visible",
+                visibility: 'visible',
               }),
             },
             style: {
-              position: "absolute",
-              right: "2%",
-              top: "50%",
-              transform: "translate(0%,-50%)",
+              position: 'absolute',
+              right: '2%',
+              top: '50%',
+              transform: 'translate(0%,-50%)',
             },
           },
         }}
@@ -74,22 +74,22 @@ const ProductCardSlider = ({
         <ChevronRight size="24px" />
       </Button>
     </>
-  );
+  )
 
   return (
-    <div className={css({ position: "relative" })}>
-      <H5 marginBottom="2rem" $style={{ fontWeight: "normal" }}>
+    <div className={css({position: 'relative'})}>
+      <H5 marginBottom="2rem" $style={{fontWeight: 'normal'}}>
         {title}
       </H5>
       <Swiper
         swipeHandler="#swiper-card-slider"
         id={`swiper-card-slider`}
         style={{
-          width: "100%",
+          width: '100%',
           zIndex: 0,
         }}
-        scrollbar={{ snapOnRelease: true, hide: true }}
-        navigation={{ nextEl: "#slider-next", prevEl: "#slider-prev" }}
+        scrollbar={{snapOnRelease: true, hide: true}}
+        navigation={{nextEl: '#slider-next', prevEl: '#slider-prev'}}
         breakpoints={{
           320: {
             slidesPerView: 1.1,
@@ -108,21 +108,21 @@ const ProductCardSlider = ({
         }}
       >
         {isLoading || error
-          ? ["", "", "", "", ""].map((m, index) => {
+          ? ['', '', '', '', ''].map((m, index) => {
               return (
                 <SwiperSlide key={`loading-${index}`}>
                   {skeltonCard}
                 </SwiperSlide>
-              );
+              )
             })
           : cards.length &&
             cards.map((card, index) => {
-              return <SwiperSlide key={`card-${index}`}>{card}</SwiperSlide>;
+              return <SwiperSlide key={`card-${index}`}>{card}</SwiperSlide>
             })}
       </Swiper>
       {navigation}
     </div>
-  );
-};
+  )
+}
 
-export { ProductCardSlider };
+export {ProductCardSlider}

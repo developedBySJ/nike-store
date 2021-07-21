@@ -1,65 +1,65 @@
-import { useStyletron } from "baseui";
-import { Block } from "baseui/block";
-import { Button } from "baseui/button";
-import { FormControl } from "baseui/form-control";
-import { Input } from "baseui/input";
-import { Label1, Paragraph1 } from "baseui/typography";
-import { useFormik } from "formik";
-import React from "react";
-import { AddressInput } from "../../../../lib/graphQl/globaltypes";
-import { addressValidationSchema } from "../../../Profile/MemberForm/validationSchema";
+import {useStyletron} from 'baseui'
+import {Block} from 'baseui/block'
+import {Button} from 'baseui/button'
+import {FormControl} from 'baseui/form-control'
+import {Input} from 'baseui/input'
+import {Label1, Paragraph1} from 'baseui/typography'
+import {useFormik} from 'formik'
+import React from 'react'
+import {AddressInput} from '../../../../lib/graphQl/globaltypes'
+import {addressValidationSchema} from '../../../Profile/MemberForm/validationSchema'
 
 const DeliveryOption = ({
   address,
   setAddress,
   setDisablePayments,
 }: {
-  address: AddressInput;
-  setAddress: (e: AddressInput) => void;
-  setDisablePayments: (e: boolean) => void;
+  address: AddressInput
+  setAddress: (e: AddressInput) => void
+  setDisablePayments: (e: boolean) => void
 }) => {
-  console.log({ address });
-  const [css, theme] = useStyletron();
+  console.log({address})
+  const [css, theme] = useStyletron()
 
-  const [disabled, setDisabled] = React.useState(true);
+  const [disabled, setDisabled] = React.useState(true)
 
   const formik = useFormik({
     initialValues: address,
     validationSchema: addressValidationSchema,
     onSubmit: (e) => {
-      setAddress(e);
-      setDisablePayments(false);
+      setAddress(e)
+      setDisablePayments(false)
     },
     validateOnChange: true,
     validateOnBlur: true,
-  });
+  })
 
   const formOverrides = disabled
     ? {
-        ControlContainer: { style: { marginBottom: 0 } },
+        ControlContainer: {style: {marginBottom: 0}},
       }
     : {
         ControlContainer: {
-          style: { marginBottom: theme.sizing.scale500 },
+          style: {marginBottom: theme.sizing.scale500},
         },
-      };
+      }
 
   const inputOverrides = disabled
     ? {
-        Root: { style: { border: "1px solid #fff" } },
+        Root: {style: {border: '1px solid #fff'}},
         Input: {
-          style: { backgroundColor: "#fff", border: "none", color: "#111" },
+          style: {backgroundColor: '#fff', border: 'none', color: '#111'},
         },
       }
-    : {};
-  const size = disabled ? "compact" : "default";
+    : {}
+  const size = disabled ? 'compact' : 'default'
 
   const isValid = !(
     formik.errors.addressLine1 ||
     formik.errors.city ||
     formik.errors.city ||
     formik.errors.postalCode
-  );
+  )
 
   return (
     <>
@@ -72,7 +72,7 @@ const DeliveryOption = ({
           <Label1 padding="0.75rem 0 0.75rem 2rem" color="#f7f7f7">
             1. DELIVERY OPTIONS
           </Label1>
-          <Button $style={{ padding: "0px" }}>
+          <Button $style={{padding: '0px'}}>
             <Label1
               padding="0.75rem 2rem"
               color="#d3d3d3"
@@ -81,26 +81,26 @@ const DeliveryOption = ({
                   props: {
                     onClick: () => {
                       if (!isValid) {
-                        setDisablePayments(true);
+                        setDisablePayments(true)
                       }
-                      setDisabled((prev) => !prev);
+                      setDisabled((prev) => !prev)
                     },
                   },
                 },
               }}
               className={css({
-                cursor: "pointer",
-                textDecoration: "underline",
+                cursor: 'pointer',
+                textDecoration: 'underline',
               })}
             >
-              {disabled ? "Edit" : "Save"}
+              {disabled ? 'Edit' : 'Save'}
             </Label1>
           </Button>
         </Block>
         <Paragraph1 margin="1rem 0">Shipping Address</Paragraph1>
 
         <FormControl
-          label={disabled ? "" : "Address Line 1"}
+          label={disabled ? '' : 'Address Line 1'}
           error={formik.touched.addressLine1 && formik.errors.addressLine1}
           overrides={{
             ...formOverrides,
@@ -111,7 +111,7 @@ const DeliveryOption = ({
             size={size}
             id="addressLine1"
             name="addressLine1"
-            value={formik.values?.addressLine1 || ""}
+            value={formik.values?.addressLine1 || ''}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             type="text"
@@ -124,7 +124,7 @@ const DeliveryOption = ({
           />
         </FormControl>
         <FormControl
-          label={disabled ? "" : "City"}
+          label={disabled ? '' : 'City'}
           error={formik.touched.city && formik.errors.city}
           overrides={{
             ...formOverrides,
@@ -135,7 +135,7 @@ const DeliveryOption = ({
             size={size}
             id="city"
             name="city"
-            value={formik.values?.city || ""}
+            value={formik.values?.city || ''}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             type="text"
@@ -146,7 +146,7 @@ const DeliveryOption = ({
           />
         </FormControl>
         <FormControl
-          label={disabled ? "" : "Postal Code"}
+          label={disabled ? '' : 'Postal Code'}
           error={formik.touched.postalCode && formik.errors.postalCode}
           overrides={{
             ...formOverrides,
@@ -157,7 +157,7 @@ const DeliveryOption = ({
             size={size}
             id="postalCode"
             name="postalCode"
-            value={formik.values?.postalCode || ""}
+            value={formik.values?.postalCode || ''}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             type="number"
@@ -170,7 +170,7 @@ const DeliveryOption = ({
           />
         </FormControl>
         <FormControl
-          label={disabled ? "" : "Country"}
+          label={disabled ? '' : 'Country'}
           // error={formik.touched.lastName && formik.errors.lastName}
           overrides={{
             ...formOverrides,
@@ -181,7 +181,7 @@ const DeliveryOption = ({
             size={size}
             id="country"
             name="country"
-            value={formik.values?.country || ""}
+            value={formik.values?.country || ''}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             type="text"
@@ -193,7 +193,7 @@ const DeliveryOption = ({
         </FormControl>
       </form>
     </>
-  );
-};
+  )
+}
 
-export { DeliveryOption };
+export {DeliveryOption}

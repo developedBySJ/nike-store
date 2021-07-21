@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const GET_MY_REVIEWS = gql`
   query GetMyReviews(
@@ -29,7 +29,6 @@ const GET_MY_REVIEWS = gql`
       rating
     }
   }
-
 `
 
-export { GET_MY_REVIEWS }
+export {GET_MY_REVIEWS}

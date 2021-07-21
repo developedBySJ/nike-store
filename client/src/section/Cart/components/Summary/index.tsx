@@ -1,20 +1,20 @@
-import {Block} from 'baseui/block';
-import {H6, Paragraph1, Paragraph4} from 'baseui/typography';
-import {Button} from 'baseui/button';
-import {useHistory} from 'react-router-dom';
-import {StatefulTooltip} from 'baseui/tooltip';
+import {Block} from 'baseui/block'
+import {H6, Paragraph1, Paragraph4} from 'baseui/typography'
+import {Button} from 'baseui/button'
+import {useHistory} from 'react-router-dom'
+import {StatefulTooltip} from 'baseui/tooltip'
 
-import {formatPrice} from '../../../../lib/utils/formatPrice';
-import {GetMyCart_getMyCart_products} from '../../../../lib/graphQl/queries/getMyCart/__generated__/GetMyCart';
+import {formatPrice} from '../../../../lib/utils/formatPrice'
+import {GetMyCart_getMyCart_products} from '../../../../lib/graphQl/queries/getMyCart/__generated__/GetMyCart'
 
 interface ISummaryProps {
-  products: GetMyCart_getMyCart_products[];
+  products: GetMyCart_getMyCart_products[]
 }
 
 const Summary = ({products}: ISummaryProps) => {
-  const total = products.reduce((acc, cur) => acc + cur.price * cur.qty, 0);
-  const tax = total * 0.12;
-  const histroy = useHistory();
+  const total = products.reduce((acc, cur) => acc + cur.price * cur.qty, 0)
+  const tax = total * 0.12
+  const histroy = useHistory()
   return (
     <Block margin="1rem 0" padding="1rem 0">
       <Block display="flex" justifyContent="space-between">
@@ -76,7 +76,7 @@ const Summary = ({products}: ISummaryProps) => {
         </Button>
       </Block>
     </Block>
-  );
-};
+  )
+}
 
-export {Summary};
+export {Summary}

@@ -1,9 +1,9 @@
-import { useQuery } from "@apollo/client";
-import { useStyletron } from "baseui";
-import { Accordion, Panel } from "baseui/accordion";
-import { AspectRatioBox, AspectRatioBoxBody } from "baseui/aspect-ratio-box";
-import { Block } from "baseui/block";
-import { StatefulTooltip } from "baseui/tooltip";
+import {useQuery} from '@apollo/client'
+import {useStyletron} from 'baseui'
+import {Accordion, Panel} from 'baseui/accordion'
+import {AspectRatioBox, AspectRatioBoxBody} from 'baseui/aspect-ratio-box'
+import {Block} from 'baseui/block'
+import {StatefulTooltip} from 'baseui/tooltip'
 import {
   H6,
   Label1,
@@ -11,17 +11,17 @@ import {
   Paragraph2,
   Paragraph3,
   Paragraph4,
-} from "baseui/typography";
-import React from "react";
-import { Link } from "react-router-dom";
-import { GET_MY_CART } from "../../../../lib/graphQl/queries/getMyCart";
+} from 'baseui/typography'
+import React from 'react'
+import {Link} from 'react-router-dom'
+import {GET_MY_CART} from '../../../../lib/graphQl/queries/getMyCart'
 import {
   GetMyCart,
   GetMyCart_getMyCart,
   GetMyCart_getMyCart_products,
-} from "../../../../lib/graphQl/queries/getMyCart/__generated__/GetMyCart";
-import { formatPrice } from "../../../../lib/utils/formatPrice";
-import { PanelOverrides } from "../../../Product/lib";
+} from '../../../../lib/graphQl/queries/getMyCart/__generated__/GetMyCart'
+import {formatPrice} from '../../../../lib/utils/formatPrice'
+import {PanelOverrides} from '../../../Product/lib'
 
 const OrderProductCard = ({
   description,
@@ -33,13 +33,13 @@ const OrderProductCard = ({
   size,
   slug,
 }: GetMyCart_getMyCart_products) => {
-  const [css, theme] = useStyletron();
+  const [css, theme] = useStyletron()
   return (
     <Block
       display="flex"
       padding="2rem 0"
       width="100%"
-      $style={{ borderBottom: "1px solid rgb(229,229,229)" }}
+      $style={{borderBottom: '1px solid rgb(229,229,229)'}}
     >
       <Block minWidth="96px" maxWidth="300px" width="16%">
         <AspectRatioBox width="100%">
@@ -49,9 +49,9 @@ const OrderProductCard = ({
                 src={image}
                 alt={name}
                 className={css({
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
                 })}
               />
             </Link>
@@ -62,20 +62,17 @@ const OrderProductCard = ({
         display="flex"
         justifyContent="space-between"
         marginLeft="1rem"
-        $style={{ flexGrow: 2 }}
+        $style={{flexGrow: 2}}
       >
         <Block>
-          <Link
-            to={`/shop/${slug}`}
-            className={css({ textDecoration: "none" })}
-          >
+          <Link to={`/shop/${slug}`} className={css({textDecoration: 'none'})}>
             <Paragraph1>{name}</Paragraph1>
           </Link>
           <Paragraph2>{description}</Paragraph2>
           <Block
             display="flex"
-            $style={{ opacity: 0.8 }}
-            flexDirection={["column", "row", "row", "row"]}
+            $style={{opacity: 0.8}}
+            flexDirection={['column', 'row', 'row', 'row']}
             flexWrap={[true, false, false, false]}
           >
             <Paragraph2 marginRight="1rem">Size {size}</Paragraph2>
@@ -90,19 +87,19 @@ const OrderProductCard = ({
         </Block>
       </Block>
     </Block>
-  );
-};
+  )
+}
 
-const OrderSummary = ({ tax, total }: { total: number; tax: number }) => {
+const OrderSummary = ({tax, total}: {total: number; tax: number}) => {
   return (
     <>
-      {" "}
+      {' '}
       <Block display="flex" justifyContent="space-between" marginTop="1.5rem">
         <Paragraph1>
           SubTotal&nbsp;&nbsp;
           <StatefulTooltip
             content={() => (
-              <Paragraph4 padding={"4px"} color="#f7f7f7" maxWidth="15rem">
+              <Paragraph4 padding={'4px'} color="#f7f7f7" maxWidth="15rem">
                 The subtotal reflects the total price of your order before any
                 applicable discounts.
               </Paragraph4>
@@ -115,7 +112,7 @@ const OrderSummary = ({ tax, total }: { total: number; tax: number }) => {
               as="span"
               padding="0 5px"
               height="100%"
-              $style={{ borderRadius: "100px" }}
+              $style={{borderRadius: '100px'}}
             >
               ?
             </Paragraph4>
@@ -137,34 +134,34 @@ const OrderSummary = ({ tax, total }: { total: number; tax: number }) => {
         margin="1rem 0"
         padding="1rem 0"
         $style={{
-          borderBottom: "1px solid rgb(229,229,229)",
-          borderTop: "1px solid rgb(229,229,229)",
+          borderBottom: '1px solid rgb(229,229,229)',
+          borderTop: '1px solid rgb(229,229,229)',
         }}
       >
         <Paragraph1>Total</Paragraph1>
         <H6>{formatPrice(total, 2)}</H6>
       </Block>
     </>
-  );
-};
+  )
+}
 
-const InYourBag = ({ data }: { data: GetMyCart_getMyCart_products[] }) => {
-  const [css, theme] = useStyletron();
+const InYourBag = ({data}: {data: GetMyCart_getMyCart_products[]}) => {
+  const [css, theme] = useStyletron()
 
-  const products = data;
-  const total = products.reduce((acc, cur) => acc + cur.price * cur.qty, 0);
-  const totalQty = products.reduce((acc, cur) => acc + cur.qty, 0);
-  const tax = total * 0.12;
+  const products = data
+  const total = products.reduce((acc, cur) => acc + cur.price * cur.qty, 0)
+  const totalQty = products.reduce((acc, cur) => acc + cur.qty, 0)
+  const tax = total * 0.12
   return (
     <Accordion
       overrides={{
         ...PanelOverrides,
-        Root: { style: { transition: "0.3s all ease-in-out" } },
+        Root: {style: {transition: '0.3s all ease-in-out'}},
         Content: {
           style: {
-            padding: "1rem 0px",
-            backgroundColor: "#fff",
-            transition: "0.3s all",
+            padding: '1rem 0px',
+            backgroundColor: '#fff',
+            transition: '0.3s all',
           },
         },
       }}
@@ -177,13 +174,13 @@ const InYourBag = ({ data }: { data: GetMyCart_getMyCart_products[] }) => {
                 {...product}
                 key={`${product.id}-${product.size}`}
               />
-            );
+            )
           })}
         </Block>
         <OrderSummary total={total} tax={tax} />
       </Panel>
     </Accordion>
-  );
-};
+  )
+}
 
-export { InYourBag, OrderProductCard, OrderSummary };
+export {InYourBag, OrderProductCard, OrderSummary}

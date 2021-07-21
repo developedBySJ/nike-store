@@ -1,34 +1,33 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const GET_MY_ORDER = gql`
-query GetMyOrders(
-  $dateRange: [String!]
-  $limit: Int = 8
-  $page: Int = 1
-  $sortBy: SortOrderBy
-  $status: OrderStatus
-) {
-  getMyOrders(
-    OrderFilter: {
-      dateRange: $dateRange
-      limit: $limit
-      page: $page
-      sortBy: $sortBy
-      status: $status
-    }
+  query GetMyOrders(
+    $dateRange: [String!]
+    $limit: Int = 8
+    $page: Int = 1
+    $sortBy: SortOrderBy
+    $status: OrderStatus
   ) {
-    createdAt
-    deliveredAt
-    id
-    paidAt
-    products {
+    getMyOrders(
+      OrderFilter: {
+        dateRange: $dateRange
+        limit: $limit
+        page: $page
+        sortBy: $sortBy
+        status: $status
+      }
+    ) {
+      createdAt
+      deliveredAt
       id
-      image
+      paidAt
+      products {
+        id
+        image
+      }
+      totalPrice
     }
-    totalPrice
   }
-}
-
 `
 
-export { GET_MY_ORDER }
+export {GET_MY_ORDER}

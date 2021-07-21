@@ -8,20 +8,20 @@
 // ====================================================
 
 export interface GetMembers_getMembers {
-  __typename: "Member";
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  dateOfBirth: any;
-  isAdmin: boolean;
+  __typename: 'Member'
+  id: string
+  firstName: string
+  lastName: string
+  email: string
+  dateOfBirth: any
+  isAdmin: boolean
 }
 
 export interface GetMembers {
-  getMembers: GetMembers_getMembers[];
+  getMembers: GetMembers_getMembers[]
 }
 
 export interface GetMembersVariables {
-  limit?: number | null;
-  page?: number | null;
+  limit?: number | null
+  page?: number | null
 }

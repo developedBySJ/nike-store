@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const GET_PRODUCTS_COMPLETE = gql`
   query GetProductsComplete(
@@ -43,7 +43,6 @@ const GET_PRODUCTS_COMPLETE = gql`
       slug
     }
   }
-
 `
 
-export { GET_PRODUCTS_COMPLETE }
+export {GET_PRODUCTS_COMPLETE}

@@ -1,21 +1,21 @@
-import React from 'react';
-import {Block} from 'baseui/block';
-import {useQuery} from '@apollo/client';
-import {useStyletron} from 'baseui';
+import React from 'react'
+import {Block} from 'baseui/block'
+import {useQuery} from '@apollo/client'
+import {useStyletron} from 'baseui'
 import {
   CategoricalColumn,
   NumericalColumn,
   StatefulDataTable,
   StringColumn,
-} from 'baseui/data-table';
+} from 'baseui/data-table'
 
-import {LoadingSnipper} from '../../../lib/Components';
-import {GET_PRODUCTS_COMPLETE} from '../../../lib/graphQl/queries/getProductsComplete/index,';
+import {LoadingSnipper} from '../../../lib/Components'
+import {GET_PRODUCTS_COMPLETE} from '../../../lib/graphQl/queries/getProductsComplete/index,'
 import {
   GetProductsComplete,
   GetProductsCompleteVariables,
-} from '../../../lib/graphQl/queries/getProductsComplete/__generated__/GetProductsComplete';
-import {displayNotification} from '../../../lib/utils/displayNotification';
+} from '../../../lib/graphQl/queries/getProductsComplete/__generated__/GetProductsComplete'
+import {displayNotification} from '../../../lib/utils/displayNotification'
 
 type RowDataT = [
   string, //        product.id,
@@ -33,7 +33,7 @@ type RowDataT = [
   string | null, // product.material,
   string, //        product.slug,
   Date, //          product.createdAt,
-];
+]
 
 const columns = [
   StringColumn({
@@ -96,10 +96,10 @@ const columns = [
     title: 'Created At',
     mapDataToValue: (data: RowDataT) => data[14],
   }),
-];
+]
 
 const ProductTable = () => {
-  const [css, theme] = useStyletron();
+  const [css, theme] = useStyletron()
   const {loading, data, error} = useQuery<
     GetProductsComplete,
     GetProductsCompleteVariables
@@ -107,13 +107,13 @@ const ProductTable = () => {
     variables: {
       limit: 50,
     },
-  });
+  })
 
   if (loading || error || !data) {
     if (error || (!loading && !data)) {
-      displayNotification('negative', 'Something went wrong!');
+      displayNotification('negative', 'Something went wrong!')
     }
-    return <LoadingSnipper />;
+    return <LoadingSnipper />
   }
   const rows = data.getProducts.map((product) => ({
     id: product.id,
@@ -134,12 +134,12 @@ const ProductTable = () => {
       product.slug,
       product.createdAt,
     ],
-  }));
+  }))
   return (
     <Block className={css({height: '100vh', width: '100%'})}>
       <StatefulDataTable columns={columns} rows={rows} resizableColumnWidths />
     </Block>
-  );
-};
+  )
+}
 
-export {ProductTable};
+export {ProductTable}

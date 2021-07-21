@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const GET_ORDERS = gql`
   query GetOrders(
@@ -42,6 +42,5 @@ const GET_ORDERS = gql`
       totalPrice
     }
   }
-
 `
-export { GET_ORDERS }
+export {GET_ORDERS}

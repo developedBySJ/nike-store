@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const SIGN_UP = gql`
   mutation SignUp(
@@ -29,4 +29,4 @@ const SIGN_UP = gql`
   }
 `
 
-export { SIGN_UP }
+export {SIGN_UP}

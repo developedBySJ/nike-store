@@ -1,6 +1,6 @@
-import { Block } from "baseui/block";
-import { Spinner } from "baseui/spinner";
-import React from "react";
+import {Block} from 'baseui/block'
+import {Spinner} from 'baseui/spinner'
+import React from 'react'
 
 const LoadingSnipper = () => {
   return (
@@ -14,7 +14,7 @@ const LoadingSnipper = () => {
     >
       <Spinner color="#464646" />
     </Block>
-  );
-};
+  )
+}
 
-export { LoadingSnipper };
+export {LoadingSnipper}

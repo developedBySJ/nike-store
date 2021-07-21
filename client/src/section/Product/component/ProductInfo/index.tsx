@@ -1,19 +1,19 @@
-import {useStyletron} from 'baseui';
-import {Block} from 'baseui/block';
-import {StyledLink} from 'baseui/link';
-import {Modal, ModalBody, ModalHeader} from 'baseui/modal';
-import {Skeleton} from 'baseui/skeleton';
-import {H4, Paragraph1, Paragraph2} from 'baseui/typography';
-import React from 'react';
-import {formatPrice} from '../../../../lib/utils/formatPrice';
+import {useStyletron} from 'baseui'
+import {Block} from 'baseui/block'
+import {StyledLink} from 'baseui/link'
+import {Modal, ModalBody, ModalHeader} from 'baseui/modal'
+import {Skeleton} from 'baseui/skeleton'
+import {H4, Paragraph1, Paragraph2} from 'baseui/typography'
+import React from 'react'
+import {formatPrice} from '../../../../lib/utils/formatPrice'
 
 interface IProductNameProps {
-  name: string;
-  description: string;
-  price: number;
+  name: string
+  description: string
+  price: number
 }
 const ProductName = ({description, name, price}: IProductNameProps) => {
-  const [css, theme] = useStyletron();
+  const [css, theme] = useStyletron()
   return (
     <Block display="flex" justifyContent="space-between" marginBottom="2rem">
       <Block>
@@ -27,18 +27,18 @@ const ProductName = ({description, name, price}: IProductNameProps) => {
         </Paragraph2>
       </Block>
     </Block>
-  );
-};
+  )
+}
 
 const ProductDetails = (props: {
-  details: string;
-  name: string;
-  price: number;
-  image: string;
+  details: string
+  name: string
+  price: number
+  image: string
 }) => {
-  const {details, image, name, price} = props;
-  const [css, theme] = useStyletron();
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const {details, image, name, price} = props
+  const [css, theme] = useStyletron()
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
   return (
     <>
       <div>
@@ -117,11 +117,11 @@ const ProductDetails = (props: {
         </ModalHeader>
       </Modal>
     </>
-  );
-};
+  )
+}
 
 const ShippingInfo = () => {
-  const [css, theme] = useStyletron();
+  const [css, theme] = useStyletron()
   return (
     <>
       <Paragraph2 marginBottom="2rem">
@@ -153,7 +153,7 @@ const ShippingInfo = () => {
         holidays).
       </Paragraph2>
     </>
-  );
-};
+  )
+}
 
-export {ProductName, ProductDetails, ShippingInfo};
+export {ProductName, ProductDetails, ShippingInfo}

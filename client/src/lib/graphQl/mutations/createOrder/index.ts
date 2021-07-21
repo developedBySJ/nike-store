@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const CREATE_ORDER = gql`
   mutation CreateOrder(
@@ -46,9 +46,8 @@ const CREATE_ORDER = gql`
       tax
       totalPrice
       createdAt
+    }
   }
-}
-
 `
 
-export { CREATE_ORDER }
+export {CREATE_ORDER}

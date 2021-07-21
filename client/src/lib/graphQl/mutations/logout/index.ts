@@ -1,8 +1,8 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const LOG_OUT = gql`
-  mutation Logout{
-    logOut{
+  mutation Logout {
+    logOut {
       avatar
       didRequest
       email
@@ -13,4 +13,4 @@ const LOG_OUT = gql`
     }
   }
 `
-export { LOG_OUT }
+export {LOG_OUT}

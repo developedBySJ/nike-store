@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const UPDATE_MEMBER_BY_ID = gql`
   mutation UpdateMemberById(
@@ -41,6 +41,5 @@ const UPDATE_MEMBER_BY_ID = gql`
       lastName
     }
   }
-
 `
-export { UPDATE_MEMBER_BY_ID }
+export {UPDATE_MEMBER_BY_ID}

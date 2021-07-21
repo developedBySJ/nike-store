@@ -1,15 +1,15 @@
-import React from "react";
-import { useStyletron } from "baseui";
+import React from 'react'
+import {useStyletron} from 'baseui'
 import {
   HomeFeatured,
   HomeHero,
   HomeLatest,
   HomeTrending,
   HomePreFooter,
-} from "./Components";
+} from './Components'
 
 const Home = () => {
-  const [css, theme] = useStyletron();
+  const [css, theme] = useStyletron()
 
   return (
     <>
@@ -18,19 +18,19 @@ const Home = () => {
       </section>
       <section
         id="trending"
-        className={css({ margin: "1rem 0", padding: "1rem 0" })}
+        className={css({margin: '1rem 0', padding: '1rem 0'})}
       >
         <HomeTrending />
       </section>
       <section
         id="latest"
-        className={css({ margin: "1rem 0", padding: "1rem 0" })}
+        className={css({margin: '1rem 0', padding: '1rem 0'})}
       >
         <HomeLatest />
       </section>
       <section
         id="featured"
-        className={css({ margin: "1rem 0", padding: "1rem 0" })}
+        className={css({margin: '1rem 0', padding: '1rem 0'})}
       >
         <HomeFeatured />
       </section>
@@ -38,7 +38,7 @@ const Home = () => {
         <HomePreFooter />
       </section>
     </>
-  );
-};
+  )
+}
 
-export { Home as default };
+export {Home as default}

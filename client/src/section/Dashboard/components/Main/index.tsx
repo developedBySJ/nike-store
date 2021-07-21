@@ -1,22 +1,22 @@
-import React from 'react';
-import {useStyletron} from 'baseui';
-import {Avatar} from 'baseui/avatar';
-import {Block} from 'baseui/block';
-import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
-import {StyledLink} from 'baseui/link';
-import {H4, H5, H6, Paragraph1} from 'baseui/typography';
-import {Viewer} from '../../../../lib/types';
-import User from '../../../../lib/assets/icons/User.svg';
-import {Link} from 'react-router-dom';
-import {CONFIG} from './config';
+import React from 'react'
+import {useStyletron} from 'baseui'
+import {Avatar} from 'baseui/avatar'
+import {Block} from 'baseui/block'
+import {FlexGrid, FlexGridItem} from 'baseui/flex-grid'
+import {StyledLink} from 'baseui/link'
+import {H4, H5, H6, Paragraph1} from 'baseui/typography'
+import {Viewer} from '../../../../lib/types'
+import User from '../../../../lib/assets/icons/User.svg'
+import {Link} from 'react-router-dom'
+import {CONFIG} from './config'
 
 interface IMainProps {
-  viewer: Viewer;
+  viewer: Viewer
 }
 
 const Main = ({viewer}: IMainProps) => {
-  const [css, theme] = useStyletron();
-  const fullName = `${viewer.firstName} ${viewer.lastName}`;
+  const [css, theme] = useStyletron()
+  const fullName = `${viewer.firstName} ${viewer.lastName}`
   return (
     <>
       <Block
@@ -41,7 +41,7 @@ const Main = ({viewer}: IMainProps) => {
       >
         {CONFIG.map((e, i) => {
           if (e.onlyAdmin && !viewer.isAdmin) {
-            return null;
+            return null
           }
           return (
             <FlexGridItem key={`${e.title}${i}`}>
@@ -90,11 +90,11 @@ const Main = ({viewer}: IMainProps) => {
                 </Block>
               </Link>
             </FlexGridItem>
-          );
+          )
         })}
       </FlexGrid>
     </>
-  );
-};
+  )
+}
 
-export {Main};
+export {Main}

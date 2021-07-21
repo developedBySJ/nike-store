@@ -1,19 +1,19 @@
-import {useStyletron} from 'baseui';
-import {Block} from 'baseui/block';
-import {H6, Paragraph1, Paragraph2, Paragraph4} from 'baseui/typography';
-import React from 'react';
-import {Link} from 'react-router-dom';
-import {Viewer} from '../../../../lib/types';
-import {ListItem} from 'baseui/list';
+import {useStyletron} from 'baseui'
+import {Block} from 'baseui/block'
+import {H6, Paragraph1, Paragraph2, Paragraph4} from 'baseui/typography'
+import React from 'react'
+import {Link} from 'react-router-dom'
+import {Viewer} from '../../../../lib/types'
+import {ListItem} from 'baseui/list'
 
 interface ISubHeaderProps {
-  viewer: Viewer;
+  viewer: Viewer
 }
 
 const SubHeader = ({viewer}: ISubHeaderProps) => {
-  const [css, theme] = useStyletron();
+  const [css, theme] = useStyletron()
 
-  const [isUserMenuOpen, setIsUserMenuOpen] = React.useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = React.useState(false)
 
   const UserMenuItems = [
     {name: 'Dashboard', link: '/me'},
@@ -21,7 +21,7 @@ const SubHeader = ({viewer}: ISubHeaderProps) => {
     {name: 'Orders ', link: '/orders'},
     {name: 'Favourites ', link: '/favourites'},
     {name: 'Log Out', link: '/logout'},
-  ];
+  ]
 
   const UserMenu = (
     <Block
@@ -57,7 +57,7 @@ const SubHeader = ({viewer}: ISubHeaderProps) => {
         </ul>
       </div>
     </Block>
-  );
+  )
 
   const renderUserHelper = viewer.id ? (
     <>
@@ -95,7 +95,7 @@ const SubHeader = ({viewer}: ISubHeaderProps) => {
         </Link>
       </Paragraph4>
     </>
-  );
+  )
 
   return (
     <Block
@@ -126,7 +126,7 @@ const SubHeader = ({viewer}: ISubHeaderProps) => {
       </Paragraph4>
       {renderUserHelper}
     </Block>
-  );
-};
+  )
+}
 
-export {SubHeader};
+export {SubHeader}

@@ -8,23 +8,23 @@
 // ====================================================
 
 export interface GetMyCart_getMyCart_products {
-  __typename: "CartProduct";
-  description: string;
-  image: string;
-  name: string;
-  price: number;
-  qty: number;
-  size: string;
-  slug: string;
-  id: string;
+  __typename: 'CartProduct'
+  description: string
+  image: string
+  name: string
+  price: number
+  qty: number
+  size: string
+  slug: string
+  id: string
 }
 
 export interface GetMyCart_getMyCart {
-  __typename: "Cart";
-  id: string;
-  products: GetMyCart_getMyCart_products[];
+  __typename: 'Cart'
+  id: string
+  products: GetMyCart_getMyCart_products[]
 }
 
 export interface GetMyCart {
-  getMyCart: GetMyCart_getMyCart;
+  getMyCart: GetMyCart_getMyCart
 }

@@ -1,87 +1,87 @@
-import React from "react";
-import { useFormik } from "formik";
+import React from 'react'
+import {useFormik} from 'formik'
 import {
   GetMemberById,
   GetMemberByIdVariables,
   GetMemberById_getMemberById,
   GetMemberById_getMemberById_address,
-} from "../../../lib/graphQl/queries/getMemberById/__generated__/GetMemberById";
-import { validationSchema } from "./validationSchema";
-import { useStyletron } from "baseui";
-import { Input } from "baseui/input";
-import { FormControl } from "baseui/form-control";
-import { DatePicker } from "baseui/datepicker";
-import { H5, H6, Paragraph1 } from "baseui/typography";
-import { Block } from "baseui/block";
-import { Button } from "baseui/button";
-import { useMutation } from "@apollo/client";
-import { UPDATE_MEMBER_BY_ID } from "../../../lib/graphQl/mutations/updateMemberById";
+} from '../../../lib/graphQl/queries/getMemberById/__generated__/GetMemberById'
+import {validationSchema} from './validationSchema'
+import {useStyletron} from 'baseui'
+import {Input} from 'baseui/input'
+import {FormControl} from 'baseui/form-control'
+import {DatePicker} from 'baseui/datepicker'
+import {H5, H6, Paragraph1} from 'baseui/typography'
+import {Block} from 'baseui/block'
+import {Button} from 'baseui/button'
+import {useMutation} from '@apollo/client'
+import {UPDATE_MEMBER_BY_ID} from '../../../lib/graphQl/mutations/updateMemberById'
 import {
   UpdateMemberById,
   UpdateMemberByIdVariables,
-} from "../../../lib/graphQl/mutations/updateMemberById/__generated__/UpdateMemberById";
-import { useSnackbar } from "baseui/snackbar";
-import { displayNotification } from "../../../lib/utils/displayNotification";
-import { GET_MEMBER_BY_ID } from "../../../lib/graphQl/queries/getMemberById";
-import { Avatar } from "baseui/avatar";
-import { StyledLink } from "baseui/link";
+} from '../../../lib/graphQl/mutations/updateMemberById/__generated__/UpdateMemberById'
+import {useSnackbar} from 'baseui/snackbar'
+import {displayNotification} from '../../../lib/utils/displayNotification'
+import {GET_MEMBER_BY_ID} from '../../../lib/graphQl/queries/getMemberById'
+import {Avatar} from 'baseui/avatar'
+import {StyledLink} from 'baseui/link'
 
 interface IIntialValue {
-  address: GetMemberById_getMemberById_address;
-  avatar: string | null;
-  createdAt: any;
-  dateOfBirth: any;
-  email: string;
-  firstName: string;
-  id: string;
-  isAdmin: boolean;
-  lastName: string;
+  address: GetMemberById_getMemberById_address
+  avatar: string | null
+  createdAt: any
+  dateOfBirth: any
+  email: string
+  firstName: string
+  id: string
+  isAdmin: boolean
+  lastName: string
 }
 
 interface IMemberFormProps {
-  initialValues: GetMemberById_getMemberById;
+  initialValues: GetMemberById_getMemberById
 }
 
-const MemberForm = ({ initialValues }: IMemberFormProps) => {
-  const [css, theme] = useStyletron();
-  const { enqueue } = useSnackbar();
-  const [updateMember, { data, loading, error }] = useMutation<
+const MemberForm = ({initialValues}: IMemberFormProps) => {
+  const [css, theme] = useStyletron()
+  const {enqueue} = useSnackbar()
+  const [updateMember, {data, loading, error}] = useMutation<
     UpdateMemberById,
     UpdateMemberByIdVariables
   >(UPDATE_MEMBER_BY_ID, {
     onError: () => {
       displayNotification(
-        "negative",
-        "Sorry,currently we are unable to update your profile! :("
-      );
+        'negative',
+        'Sorry,currently we are unable to update your profile! :(',
+      )
     },
     variables: {
       id: initialValues.id,
     },
     onCompleted: () => {
-      enqueue({ message: "Profile Updated Successfully!" });
+      enqueue({message: 'Profile Updated Successfully!'})
     },
-    update: (cache, { data: newData }) => {
+    update: (cache, {data: newData}) => {
       if (newData) {
         cache.writeQuery<GetMemberById, GetMemberByIdVariables>({
           query: GET_MEMBER_BY_ID,
           data: {
             getMemberById: newData.updateMember,
           },
-        });
+        })
       }
     },
-  });
+  })
 
   const intialAddress: GetMemberById_getMemberById_address = initialValues.address
     ? initialValues.address
     : {
-        __typename: "Address",
-        addressLine1: "",
-        city: "",
-        country: "",
+        __typename: 'Address',
+        addressLine1: '',
+        city: '',
+        country: '',
         postalCode: 0,
-      };
+      }
 
   const formik = useFormik<IIntialValue>({
     initialValues: {
@@ -90,19 +90,19 @@ const MemberForm = ({ initialValues }: IMemberFormProps) => {
     },
     validationSchema,
     onSubmit: (e) => {
-      const address = e.address && { ...e.address, __typename: undefined };
-      const variables = { ...e, address, __typename: undefined };
+      const address = e.address && {...e.address, __typename: undefined}
+      const variables = {...e, address, __typename: undefined}
       updateMember({
         variables,
-      });
+      })
     },
     validateOnChange: true,
     validateOnBlur: true,
-  });
+  })
 
   const formOverrides = {
-    style: { marginBottom: theme.sizing.scale900 },
-  };
+    style: {marginBottom: theme.sizing.scale900},
+  }
 
   const onChange = ({
     target: {
@@ -111,7 +111,7 @@ const MemberForm = ({ initialValues }: IMemberFormProps) => {
     },
   }: any) =>
     validity.valid &&
-    updateMember({ variables: { id: initialValues.id, avatar: file } });
+    updateMember({variables: {id: initialValues.id, avatar: file}})
 
   const disableBtn = !!(
     !formik.dirty ||
@@ -127,18 +127,18 @@ const MemberForm = ({ initialValues }: IMemberFormProps) => {
     formik.errors.id ||
     formik.errors.isAdmin ||
     formik.errors.lastName
-  );
+  )
   return (
     <Block margin="2.5rem auto" padding="2.5rem 0" maxWidth="600px">
       <H5 marginBottom="2rem">Account Details</H5>
       <Block
         $style={{
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
+          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <Avatar
@@ -148,18 +148,18 @@ const MemberForm = ({ initialValues }: IMemberFormProps) => {
         />
         <label htmlFor="avatar">
           <StyledLink
-            style={{ margin: "1rem", display: "block", cursor: "pointer" }}
+            style={{margin: '1rem', display: 'block', cursor: 'pointer'}}
           >
             Edit
           </StyledLink>
           <input
             id="avatar"
-            name={"avatar"}
-            type={"file"}
+            name={'avatar'}
+            type={'file'}
             placeholder="Choose Avatar"
             onChange={onChange}
             accept="image/png, image/jpeg"
-            className={css({ display: "none" })}
+            className={css({display: 'none'})}
             multiple={false}
           />
         </label>
@@ -230,16 +230,16 @@ const MemberForm = ({ initialValues }: IMemberFormProps) => {
         >
           <DatePicker
             placeholder="Date Of Birth"
-            overrides={{ Input: { props: { id: "dateOfBirth" } } }}
+            overrides={{Input: {props: {id: 'dateOfBirth'}}}}
             value={new Date(formik.values.dateOfBirth)}
-            minDate={new Date("01/01/1900")}
-            onChange={({ date }) => {
-              const dateValue = date;
+            minDate={new Date('01/01/1900')}
+            onChange={({date}) => {
+              const dateValue = date
               if (dateValue instanceof Date) {
-                formik.setFieldValue("dateOfBirth", dateValue);
+                formik.setFieldValue('dateOfBirth', dateValue)
               }
             }}
-            onClose={() => formik.validateField("dateOfBirth")}
+            onClose={() => formik.validateField('dateOfBirth')}
           />
         </FormControl>
         <H5 margin="2rem 0" marginTop="4rem">
@@ -258,7 +258,7 @@ const MemberForm = ({ initialValues }: IMemberFormProps) => {
           <Input
             id="addressLine1"
             name="address.addressLine1"
-            value={formik.values.address?.addressLine1 || ""}
+            value={formik.values.address?.addressLine1 || ''}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             type="text"
@@ -280,7 +280,7 @@ const MemberForm = ({ initialValues }: IMemberFormProps) => {
           <Input
             id="city"
             name="address.city"
-            value={formik.values.address?.city || ""}
+            value={formik.values.address?.city || ''}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             type="text"
@@ -305,7 +305,7 @@ const MemberForm = ({ initialValues }: IMemberFormProps) => {
           <Input
             id="postalCode"
             name="address.postalCode"
-            value={formik.values.address?.postalCode || ""}
+            value={formik.values.address?.postalCode || ''}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             type="number"
@@ -329,7 +329,7 @@ const MemberForm = ({ initialValues }: IMemberFormProps) => {
           <Input
             id="country"
             name="address.country"
-            value={formik.values.address?.country || ""}
+            value={formik.values.address?.country || ''}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             type="text"
@@ -346,13 +346,13 @@ const MemberForm = ({ initialValues }: IMemberFormProps) => {
           disabled={disableBtn}
           isLoading={loading}
           size="large"
-          $style={{ width: "100%" }}
+          $style={{width: '100%'}}
         >
           Update
         </Button>
       </form>
     </Block>
-  );
-};
+  )
+}
 
-export { MemberForm };
+export {MemberForm}

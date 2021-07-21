@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const UPDATE_ORDER = gql`
   mutation UpdateOrder($orderId: ID!) {
@@ -37,4 +37,4 @@ const UPDATE_ORDER = gql`
   }
 `
 
-export { UPDATE_ORDER }
+export {UPDATE_ORDER}

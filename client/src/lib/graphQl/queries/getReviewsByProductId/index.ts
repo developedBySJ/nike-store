@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const GET_REVIEWS_BY_PRODUCT_ID = gql`
   query GetReviewsByProductId(
@@ -31,4 +31,4 @@ const GET_REVIEWS_BY_PRODUCT_ID = gql`
   }
 `
 
-export { GET_REVIEWS_BY_PRODUCT_ID }
+export {GET_REVIEWS_BY_PRODUCT_ID}

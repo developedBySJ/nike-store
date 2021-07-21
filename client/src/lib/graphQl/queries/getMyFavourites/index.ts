@@ -1,7 +1,7 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const GET_MY_FAVOURITES = gql`
-  query GetMyFavourites{
+  query GetMyFavourites {
     getMyFavourites {
       createdAt
       id
@@ -17,4 +17,4 @@ const GET_MY_FAVOURITES = gql`
   }
 `
 
-export { GET_MY_FAVOURITES }
+export {GET_MY_FAVOURITES}

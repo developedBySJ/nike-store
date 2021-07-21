@@ -1,4 +1,4 @@
-import { ProductReviews } from './ProductReview'
+import {ProductReviews} from './ProductReview'
 
 export * from './ProductImages'
 export * from './ProductSkeleton'

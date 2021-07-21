@@ -8,24 +8,24 @@
 // ====================================================
 
 export interface SignUp_signUp {
-  __typename: "Viewer";
-  avatar: string | null;
-  firstName: string | null;
-  email: string | null;
-  id: string | null;
-  isAdmin: boolean | null;
-  lastName: string | null;
-  didRequest: boolean;
+  __typename: 'Viewer'
+  avatar: string | null
+  firstName: string | null
+  email: string | null
+  id: string | null
+  isAdmin: boolean | null
+  lastName: string | null
+  didRequest: boolean
 }
 
 export interface SignUp {
-  signUp: SignUp_signUp;
+  signUp: SignUp_signUp
 }
 
 export interface SignUpVariables {
-  dateOfBirth: any;
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
+  dateOfBirth: any
+  email: string
+  firstName: string
+  lastName: string
+  password: string
 }

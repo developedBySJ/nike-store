@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const REMOVE_FROM_FAVOURITES = gql`
   mutation RemoveFromFavourites($id: ID!) {
@@ -18,4 +18,4 @@ const REMOVE_FROM_FAVOURITES = gql`
   }
 `
 
-export { REMOVE_FROM_FAVOURITES }
+export {REMOVE_FROM_FAVOURITES}

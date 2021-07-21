@@ -1,8 +1,8 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client'
 
 const GET_MEMBERS = gql`
   query GetMembers($limit: Int, $page: Int) {
-    getMembers(MemberFilter: { limit: $limit, page: $page }) {
+    getMembers(MemberFilter: {limit: $limit, page: $page}) {
       id
       firstName
       lastName
@@ -13,4 +13,4 @@ const GET_MEMBERS = gql`
   }
 `
 
-export { GET_MEMBERS }
+export {GET_MEMBERS}
