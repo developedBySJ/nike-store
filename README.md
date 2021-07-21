@@ -1,73 +1,81 @@
+<br />
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+    <img src="media/logo.png" alt="Logo" width="144" >
 </p>
+<h1 align="center">
+ Nike Store
+</h1>
+## ✨ Content:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+1. [Getting Started](#getting-started)
+2. [Features](#features)
+3. [Demo](#demo)
+4. [Tech Stack](#tech-stack)
+5. [Showcase](#showcase)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
+## 🏃🏻‍♂️ Getting Started :
 ```
+# install dependencies
+$ yarn
 
-## Running the app
-
-```bash
 # development
-$ npm run start
+$ yarn start
 
 # watch mode
-$ npm run start:dev
+$ yarn start:dev
 
 # production mode
-$ npm run start:prod
+$ yarn start:prod
+
 ```
+## 🥳 Features:
 
-## Test
+Nike Store is full-stack web application build using React, NestJs, MongoDb, Base Web Design System.
 
-```bash
-# unit tests
-$ npm run test
+- Authentication (SignIn/SignUp)
+- Infinite Loading
+- Filter Products
+- Products Review
+- Add Products To Bag
+- Favorites
+- Placing Orders
+- Show Pending and Completing Orders
+- Dashboard
 
-# e2e tests
-$ npm run test:e2e
+## 🌐 Demo
+Demo Link : [Nike Store ](https://nike-store-dsj.herokuapp.com/)
 
-# test coverage
-$ npm run test:cov
-```
+## 🚀 Tech Stack
+- [React - Frontend Framework](https://reactjs.org/)
+- [Base Web - Design System](https://baseweb.design/)
+- [Nest Js - NodeJs Framework](https://nestjs.com/)
+- [MongoDb - NoSql Database](https://www.mongodb.com/)
+  
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## 🌈 Showcase:
 
-## Stay in touch
+#### Landing Page:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+![Home-Page](/media/homepage.png)
 
-## License
+#### Shopping Page:
 
-Nest is [MIT licensed](LICENSE).
+![Shopping-Page](/media/shop.png)
+
+#### Product Page :
+
+![Product-Page](/media/productPage.png)
+#### Bag :
+
+![Product-Page](/media/bag.png)
+
+## 📚 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## 😇 Contact
+
+<a href="mailto:developedbysj@gmail.com">![developedbysj@gmail.com](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)</a> <a href="http://in.linkedin.com/in/swapnil-jagtap-7b8b5b202">![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)
+
+

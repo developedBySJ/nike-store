@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+<br />
+<p align="center">
+    <img src="/media/logo.png" alt="Logo" width="144" >
+</p>
+<h1 align="center">
+ Nike Store
+</h1>
+## ✨ Content:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. [Getting Started](#getting-started)
+2. [Features](#features)
+3. [Demo](#demo)
+4. [Tech Stack](#tech-stack)
+5. [Showcase](#showcase)
 
-## Available Scripts
+## 🏃🏻‍♂️ Getting Started :
+```
+# install dependencies
+$ yarn
 
-In the project directory, you can run:
+# development
+$ yarn start
 
-### `yarn start`
+# production mode
+$ yarn build
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+## 🥳 Features:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Nike Store is full-stack web application build using React, NestJs, MongoDb, Base Web Design System.
 
-### `yarn test`
+- Authentication (SignIn/SignUp)
+- Infinite Loading
+- Filter Products
+- Products Review
+- Add Products To Bag
+- Favorites
+- Placing Orders
+- Show Pending and Completing Orders
+- Dashboard
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🌐 Demo
+Demo Link : [Nike Store ](https://nike-store-dsj.herokuapp.com/)
 
-### `yarn build`
+## 🚀 Tech Stack
+- [React - Frontend Framework](https://reactjs.org/)
+- [Base Web - Design System](https://baseweb.design/)
+- [Nest Js - NodeJs Framework](https://nestjs.com/)
+- [MongoDb - NoSql Database](https://www.mongodb.com/)
+  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🌈 Showcase:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Landing Page:
 
-### `yarn eject`
+![Home-Page](/media/homepage.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Shopping Page:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Shopping-Page](/media/shop.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Product Page :
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Product-Page](/media/productPage.png)
+#### Bag :
 
-## Learn More
+![Product-Page](/media/bag.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📚 License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## 😇 Contact
+
+<a href="mailto:developedbysj@gmail.com">![developedbysj@gmail.com](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)</a> <a href="http://in.linkedin.com/in/swapnil-jagtap-7b8b5b202">![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)
+
+
