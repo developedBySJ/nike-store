@@ -1,5 +1,5 @@
-import { Model } from 'mongoose'
-import { InjectModel } from '@nestjs/mongoose'
+import {Model} from 'mongoose'
+import {InjectModel} from '@nestjs/mongoose'
 import {
   BadRequestException,
   ConflictException,
@@ -8,11 +8,11 @@ import {
   NotFoundException,
 } from '@nestjs/common'
 
-import { JwtPayload } from 'src/auth/types'
-import { SortReviewsBy } from './review.input'
-import { Review, ReviewDoc } from './review.enitity'
-import { Member, MemberDoc } from 'src/member/member.entity'
-import { Product, ProductDoc } from 'src/product/product.entity'
+import {JwtPayload} from 'src/auth/types'
+import {SortReviewsBy} from './review.input'
+import {Review, ReviewDoc} from './review.enitity'
+import {Member, MemberDoc} from 'src/member/member.entity'
+import {Product, ProductDoc} from 'src/product/product.entity'
 import {
   ICreateReview,
   IPreSave,
@@ -28,7 +28,7 @@ export class ReviewService {
     @InjectModel(Member.name) private members: Model<MemberDoc>,
   ) {}
 
-  async getReviews({ productId, limit = 8, page = 0, sortBy }: IReviewFilter) {
+  async getReviews({productId, limit = 8, page = 0, sortBy}: IReviewFilter) {
     if (!productId) {
       throw new BadRequestException('please provide product id to get reviews')
     }
@@ -36,14 +36,14 @@ export class ReviewService {
 
     const sort = sortBy
       ? {
-        ...(sortBy === SortReviewsBy.NEWEST && { createdAt: 1 }),
-        ...(sortBy === SortReviewsBy.RATING_HIGH_TO_LOW && { rating: -1 }),
-        ...(sortBy === SortReviewsBy.RATING_LOW_TO_HIGH && { rating: 1 }),
-      }
+          ...(sortBy === SortReviewsBy.NEWEST && {createdAt: 1}),
+          ...(sortBy === SortReviewsBy.RATING_HIGH_TO_LOW && {rating: -1}),
+          ...(sortBy === SortReviewsBy.RATING_LOW_TO_HIGH && {rating: 1}),
+        }
       : {}
 
     return this.reviews
-      .find({ productId: productId })
+      .find({productId: productId})
       .limit(limit)
       .skip(skip)
       .sort(sort)
@@ -61,20 +61,20 @@ export class ReviewService {
 
   async getReviewByUser(
     user: JwtPayload,
-    { limit = 8, productId, page = 1, sortBy }: IReviewFilter,
+    {limit = 8, productId, page = 1, sortBy}: IReviewFilter,
   ) {
     const skip = limit * (page - 1)
 
     const sort = sortBy
       ? {
-        ...(sortBy === SortReviewsBy.NEWEST && { createdAt: 1 }),
-        ...(sortBy === SortReviewsBy.RATING_HIGH_TO_LOW && { rating: -1 }),
-        ...(sortBy === SortReviewsBy.RATING_LOW_TO_HIGH && { rating: 1 }),
-      }
+          ...(sortBy === SortReviewsBy.NEWEST && {createdAt: 1}),
+          ...(sortBy === SortReviewsBy.RATING_HIGH_TO_LOW && {rating: -1}),
+          ...(sortBy === SortReviewsBy.RATING_LOW_TO_HIGH && {rating: 1}),
+        }
       : {}
 
     return await this.reviews
-      .find({ 'member.id': user.id, ...(productId && { productId }) })
+      .find({'member.id': user.id, ...(productId && {productId})})
       .limit(limit)
       .skip(skip)
       .sort(sort)
@@ -110,7 +110,7 @@ export class ReviewService {
       throw new ConflictException(`review already exist`)
     }
 
-    await this._preSave({ isNew: true, prevRating: 0, productId, rating })
+    await this._preSave({isNew: true, prevRating: 0, productId, rating})
 
     const newReview = await this.reviews.create({
       productId: product._id,
@@ -126,8 +126,8 @@ export class ReviewService {
     })
 
     if (product.numOfReviews < 3) {
-      const { comment, member, rating, _id } = newReview
-      product.reviews.push({ comment, member, rating, id: _id })
+      const {comment, member, rating, _id} = newReview
+      product.reviews.push({comment, member, rating, id: _id})
       await product.save()
     }
 
@@ -137,7 +137,7 @@ export class ReviewService {
   async updateReview({
     viewer,
     reviewId,
-    data: { comment, rating },
+    data: {comment, rating},
   }: IUpdateReview) {
     const review = await this.reviews.findById(reviewId)
 
@@ -203,7 +203,7 @@ export class ReviewService {
     }
   }
 
-  private async _preRemove({ productId, rating, id }) {
+  private async _preRemove({productId, rating, id}) {
     const product = await this.products.findById(productId)
     const ratingSum = product.ratings * product.numOfReviews
 
@@ -221,7 +221,7 @@ export class ReviewService {
     await product.save()
   }
 
-  private async _preSave({ productId, isNew, prevRating, rating }: IPreSave) {
+  private async _preSave({productId, isNew, prevRating, rating}: IPreSave) {
     const product = await this.products.findById(productId)
 
     if (product) {
