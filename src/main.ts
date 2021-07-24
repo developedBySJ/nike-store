@@ -9,10 +9,12 @@ import {graphqlUploadExpress} from 'graphql-upload'
 import {COOKIES} from 'src/config'
 import {AppModule} from 'src/app.module'
 import {AllExceptionsFilter} from 'src/lib/globalErrorHandler'
+import sslRedirect from 'heroku-ssl-redirect'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
 
+  app.use(sslRedirect())
   app.use(helmet({contentSecurityPolicy: false}))
   app.use(compression())
   app.use(cookieParser(COOKIES.secret))
