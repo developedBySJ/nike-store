@@ -51,6 +51,9 @@ export class CoreModule {}
     ProductModule,
     OrderModule,
     GraphQLModule.forRoot({
+      cors: {
+        origin: 'https://nike-store-dsj.herokuapp.com',
+      },
       context: ({req, res}) => ({req, res}),
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
@@ -67,7 +70,9 @@ export class CoreModule {}
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client/build'),
       exclude: ['/graphQl'],
-      renderPath: '/*',
+      serveStaticOptions: {
+        extensions: [],
+      },
     }),
   ],
   controllers: [],

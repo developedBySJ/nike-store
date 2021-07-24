@@ -13,7 +13,7 @@ import sslRedirect from 'heroku-ssl-redirect'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
-
+  app.enableCors({origin: 'https://nike-store-dsj.herokuapp.com'})
   app.use(sslRedirect())
   app.use(helmet({contentSecurityPolicy: false}))
   app.use(compression())
