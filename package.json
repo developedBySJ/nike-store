@@ -48,6 +48,7 @@
     "graphql-tools": "^7.0.2",
     "graphql-upload": "^11.0.0",
     "helmet": "^4.4.1",
+    "heroku-ssl-redirect": "^0.1.1",
     "mongoose": "^5.11.19",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
