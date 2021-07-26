@@ -60,7 +60,7 @@ const Product = ({viewer}: {viewer: Viewer}) => {
     if (statusCode === 404) {
       return <Redirect to="/404" />
     }
-    console.log(statusCode)
+    // console.log(statusCode)
   }
   if (!data) {
     return <ProductSkeleton error="Something Went Wrong! :(" />

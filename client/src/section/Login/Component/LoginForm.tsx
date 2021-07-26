@@ -47,7 +47,7 @@ const LoginForm = ({setViewer}: ILoginFormProps) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log({values})
+      // console.log({values})
       login({variables: values})
     },
     validateOnChange: true,

@@ -20,7 +20,7 @@ const OrderCard: React.FC<IOrderCard> = ({data}) => {
   const [css, theme] = useStyletron()
   const {createdAt, deliveredAt, id, paidAt, products, totalPrice} = data
   const deliveryDate = new Date()
-  deliveryDate.setDate(deliveryDate.getDay() + 2)
+  deliveryDate.setDate(deliveryDate.getDate() + 2)
   return (
     <Block width="100%" padding="0.5rem" margin="0.5 0">
       <Block

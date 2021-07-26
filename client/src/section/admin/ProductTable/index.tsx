@@ -86,7 +86,7 @@ const columns = [
   }),
   CategoricalColumn({
     title: 'Materials',
-    mapDataToValue: (data: RowDataT) => data[12],
+    mapDataToValue: (data: RowDataT) => data[12] || '---',
   }),
   StringColumn({
     title: 'Slug',
@@ -115,26 +115,28 @@ const ProductTable = () => {
     }
     return <LoadingSnipper />
   }
-  const rows = data.getProducts.map((product) => ({
-    id: product.id,
-    data: [
-      product.id,
-      product.name,
-      product.brand,
-      product.category,
-      product.description,
-      product.size,
-      product.fit,
-      product.price,
-      product.mrp,
-      product.availableStock,
-      product.ratings,
-      product.numOfReviews,
-      product.material,
-      product.slug,
-      product.createdAt,
-    ],
-  }))
+  const rows = data.getProducts
+    ? data.getProducts.map((product) => ({
+        id: product.id,
+        data: [
+          product.id,
+          product.name,
+          product.brand,
+          product.category,
+          product.description,
+          product.size,
+          product.fit,
+          product.price,
+          product.mrp,
+          product.availableStock,
+          product.ratings,
+          product.numOfReviews,
+          product.material,
+          product.slug,
+          product.createdAt,
+        ],
+      }))
+    : []
   return (
     <Block className={css({height: '100vh', width: '100%'})}>
       <StatefulDataTable columns={columns} rows={rows} resizableColumnWidths />

@@ -18,7 +18,7 @@ const DeliveryOption = ({
   setAddress: (e: AddressInput) => void
   setDisablePayments: (e: boolean) => void
 }) => {
-  console.log({address})
+  // console.log({address})
   const [css, theme] = useStyletron()
 
   const [disabled, setDisabled] = React.useState(true)

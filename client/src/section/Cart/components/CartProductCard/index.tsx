@@ -96,7 +96,7 @@ const CartProductCard = ({
         placeholder="Qty"
         onChange={(e) => {
           const qty = Number(e.option?.id)
-          console.log(name + qty)
+          // console.log(name + qty)
           if (qty) {
             updateCartProduct({variables: {productId: id, size, qty}})
           }

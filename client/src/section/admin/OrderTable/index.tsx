@@ -177,7 +177,7 @@ const OrderTable = () => {
     }
     return <LoadingSnipper />
   }
-  console.log(data.getOrders[0])
+  // console.log(data.getOrders[0])
   const rows = data.getOrders.map((order) => ({
     id: order.id,
     data: [

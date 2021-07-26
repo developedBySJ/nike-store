@@ -54,7 +54,7 @@ const OrderDetails: PrivateRouteComponent = (props) => {
       )
     },
     onCompleted: ({getOrder}) => {
-      console.log(getOrder)
+      // console.log(getOrder)
     },
   })
 
@@ -85,7 +85,7 @@ const OrderDetails: PrivateRouteComponent = (props) => {
 
   const order = data.getOrder
   const deliveryDate = new Date()
-  deliveryDate.setDate(deliveryDate.getDay() + 2)
+  deliveryDate.setDate(deliveryDate.getDate() + 2)
 
   return (
     <>

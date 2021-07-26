@@ -160,46 +160,49 @@ export class OrderService {
         'Provided total price and calculated total price are not matching!',
       )
     }
-
-    const orderId = new ObjectId()
-
-    const newOrder = await this.orders.create({
-      _id: orderId,
+    const newOrder = new this.orders({
       totalPrice: orderTotal,
       memberId: user.id,
       shippingAddress,
       products: products,
       tax: tax || totalPrice * 0.12,
     })
+    const orderId = new ObjectId(newOrder.id)
+    try {
+      const newPayment = await Stripe.charge({
+        address: shippingAddress,
+        amount: orderTotal,
+        customerName: `${user.firstName + user.lastName}`,
+        source: stripeToken,
+        orderId: orderId.toHexString(),
+      })
 
-    const newPayment = await Stripe.charge({
-      address: shippingAddress,
-      amount: orderTotal,
-      customerName: `${user.firstName + user.lastName}`,
-      source: stripeToken,
-      orderId: orderId.toHexString(),
-    })
+      if (!newPayment || newPayment.status !== 'succeeded') {
+        throw new InternalServerErrorException(
+          'Unable to process payments.Please try agian later',
+        )
+      }
 
-    if (newPayment.status !== 'succeeded') {
+      newOrder.set({
+        payment: {
+          email: user.email,
+          id: newPayment.id,
+          method: newPayment.payment_method,
+          status: newPayment.status,
+          customerName: `${user.firstName} ${user.lastName}`,
+        },
+        paidAt: new Date(),
+      })
+
+      await newOrder.save()
+      await this.cartService.clearCart(user.id)
+
+      return newOrder
+    } catch (error) {
       throw new InternalServerErrorException(
-        'Unable to process payments.Please try agian later',
+        'Unable to process payments.Please try again later',
       )
     }
-    newOrder.set({
-      payment: {
-        email: user.email,
-        id: newPayment.id,
-        method: newPayment.payment_method,
-        status: newPayment.status,
-        customerName: `${user.firstName} ${user.lastName}`,
-      },
-      paidAt: new Date(),
-    })
-
-    await newOrder.save()
-    await this.cartService.clearCart(user.id)
-
-    return newOrder
   }
 
   async updateOrder(orderId: string, deliveredAt?: string) {

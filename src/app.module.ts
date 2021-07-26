@@ -60,8 +60,11 @@ export class CoreModule {}
       uploads: false,
 
       formatError: (error: GraphQLError) => {
+        console.log(error)
+
         const graphQLFormattedError: GraphQLFormattedError = {
-          message: error.extensions.exception.response.message || error.message,
+          message:
+            error?.extensions?.exception?.response?.message || error.message,
         }
 
         return graphQLFormattedError

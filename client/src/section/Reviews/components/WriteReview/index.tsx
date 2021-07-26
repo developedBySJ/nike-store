@@ -56,8 +56,8 @@ const WriteReview: React.FC<IWriteReviewProps> = ({
   >(GET_MY_REVIEWS, {
     variables: {productId},
     onCompleted: ({getMyReviews}) => {
-      console.log('REVIEW RENDER')
-      console.log({getMyReviews})
+      // console.log('REVIEW RENDER')
+      // console.log({getMyReviews})
       if (getMyReviews.length === 1) {
         const reqReview = getMyReviews[0]
         setRating(reqReview.rating)
